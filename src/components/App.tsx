@@ -1,10 +1,12 @@
 import React from "react";
 
+import Router from "./router";
+
 function App(): JSX.Element {
     return (
-        <div className="App">
-            <h2>hello</h2>
-        </div>
+        <>
+            <Router />
+        </>
     );
 }
 
