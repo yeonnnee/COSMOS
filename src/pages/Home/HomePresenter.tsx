@@ -1,7 +1,38 @@
 import React from "react";
 
-const HomePresenter: () => JSX.Element = () => {
-    return <h1>Home</h1>;
+import { SectionTitle, Desc, Main, Section, Date, Title, Img } from "./styles";
+
+interface Iapod {
+    date: string;
+    explanation: string;
+    hdurl: string;
+    title: string;
+}
+interface Istate {
+    apod: Iapod;
+}
+
+const HomePresenter: React.FunctionComponent<Istate> = (homeProps) => {
+    const { apod } = homeProps;
+    return (
+        <Main>
+            <Section>
+                <SectionTitle>
+                    Astronomy Picture of the Day
+                    <Date>{apod.date}</Date>
+                </SectionTitle>
+            </Section>
+
+            <Section>
+                <Title>{apod.title}</Title>
+                <Desc>{apod.explanation}</Desc>
+            </Section>
+
+            <Section>
+                <Img src={apod.hdurl} />
+            </Section>
+        </Main>
+    );
 };
 
 export default HomePresenter;
