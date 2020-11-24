@@ -1,42 +1,44 @@
 import React from "react";
 import styled from "styled-components";
 import { withRouter, Link } from "react-router-dom";
+import Header from "./Header";
 
-const Header = styled.header`
+const Nav = styled.nav`
     width: 100%;
-    height: 150px;
+    height: 50px;
     padding: 20px;
-    display: ${(props: Iheader) => (props.show === "true" ? "none" : "flex")};
-    align-items: flex-start;
+    font-family: "Texturina", serif;
+    display: ${(props: INav) => (props.show === "true" ? "none" : "flex")};
+    justify-content: center;
 `;
-const Title = styled.span``;
-const Nav = styled.nav``;
-const NavList = styled.ul``;
+const NavList = styled.ul`
+    display: flex;
+`;
 const NavItem = styled.li``;
 const NavLink = styled(Link)`
     text-decoration: none;
-    color: ${(props: Inav) =>
+    color: ${(props: ILink) =>
         props.current === "true" ? "#3c6382" : "#6a89cc"};
-    font-family: "Texturina", serif;
     margin-left: 10px;
     &:hover {
         color: #3c6382;
     }
 `;
 
-interface Inav {
+interface ILink {
     current: string;
 }
-interface Iheader {
+
+interface INav {
     show: string;
 }
 
 const Navigation = withRouter((navProps) => {
     const { location } = navProps;
     return (
-        <Header show={location.pathname === "/" ? "true" : "false"}>
-            <Title> PLANET</Title>
-            <Nav>
+        <>
+            <Header />
+            <Nav show={location.pathname === "/" ? "true" : "false"}>
                 <NavList>
                     <NavLink
                         to="/today"
@@ -46,9 +48,17 @@ const Navigation = withRouter((navProps) => {
                     >
                         <NavItem>Today</NavItem>
                     </NavLink>
+                    <NavLink
+                        to="/planets"
+                        current={
+                            location.pathname === "/planets" ? "true" : "false"
+                        }
+                    >
+                        <NavItem>Planets</NavItem>
+                    </NavLink>
                 </NavList>
             </Nav>
-        </Header>
+        </>
     );
 });
 
