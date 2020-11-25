@@ -49,12 +49,14 @@ const Navigation = withRouter((navProps) => {
                         <NavItem>Today</NavItem>
                     </NavLink>
                     <NavLink
-                        to="/planets"
+                        to="/SolarSystem"
                         current={
-                            location.pathname === "/planets" ? "true" : "false"
+                            location.pathname === "/SolarSystem"
+                                ? "true"
+                                : "false"
                         }
                     >
-                        <NavItem>Planets</NavItem>
+                        <NavItem>SolarSystem</NavItem>
                     </NavLink>
                 </NavList>
             </Nav>
