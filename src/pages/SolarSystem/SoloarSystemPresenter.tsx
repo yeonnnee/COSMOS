@@ -19,7 +19,7 @@ const Carousel = styled.div`
 const List = styled.ul`
     position: absolute;
     display: grid;
-    grid-template-columns: repeat(9, 350px);
+    grid-template-columns: repeat(8, 350px);
     grid-template-rows: 500px;
     gap: 20px;
     left: ${(props: ILeft) => -props.left + `px`};
@@ -28,7 +28,6 @@ const List = styled.ul`
 
 const Item = styled.li`
     border: 1px solid white;
-    width: 100%;
 `;
 const PreBtn = styled.span`
     padding: 5px 15px;
@@ -54,26 +53,21 @@ interface ILeft {
 }
 
 interface Istate {
-    currentIndex: number;
-    ItemList: number;
+    currentGroup: number;
     left: number;
-}
-
-interface IPlanet {
-    name: string;
+    max: boolean;
 }
 
 interface IProps {
     state: Istate;
     getNextItem: () => void;
-    planets: Array<IPlanet>;
 }
 
 const SolarSystemPresneter: React.FunctionComponent<IProps> = (
     solarSystemProps
 ) => {
-    const { state, getNextItem, planets } = solarSystemProps;
-    console.log(planets);
+    const { state, getNextItem } = solarSystemProps;
+
     return (
         <Main>
             <PreBtn>
@@ -81,9 +75,14 @@ const SolarSystemPresneter: React.FunctionComponent<IProps> = (
             </PreBtn>
             <Carousel>
                 <List left={state.left}>
-                    {planets.map((planet, index) => (
-                        <Item key={index}>{planet.name}</Item>
-                    ))}
+                    <Item>MERCURY</Item>
+                    <Item>EARTH</Item>
+                    <Item>MARS</Item>
+                    <Item>JUPITER</Item>
+                    <Item>SATURN</Item>
+                    <Item>URANUS</Item>
+                    <Item>NEPTUNE</Item>
+                    <Item>PLUTO</Item>
                 </List>
             </Carousel>
             <NextBtn onClick={getNextItem}>
