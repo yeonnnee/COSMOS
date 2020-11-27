@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import SolarSystemPresneter from "./SoloarSystemPresenter";
+import React, { useEffect, useState } from "react";
+import SolarSystemPresneter from "./SolarSystemPresenter";
+import info from "../../data/planets.json";
 
 const SolarSystem: () => JSX.Element = () => {
     const [state, setState] = useState({
@@ -8,9 +9,10 @@ const SolarSystem: () => JSX.Element = () => {
         max: false,
         min: true,
     });
+    const [data, setData] = useState([{ name: "", imgUrl: "", desc: "" }]);
 
     function getNextItem() {
-        if (state.currentGroup < 5) {
+        if (state.currentGroup < info.length - 3) {
             setState({
                 currentGroup: state.currentGroup + 1,
                 left: -state.currentGroup * 350 + -20 * state.currentGroup,
@@ -43,12 +45,26 @@ const SolarSystem: () => JSX.Element = () => {
             });
         }
     }
-    console.log(state.currentGroup);
+    function fetchData() {
+        const planetList = [];
+        for (let i = 0; i < info.length; i++) {
+            const planet = {
+                name: info[i].name,
+                imgUrl: info[i].imgUrl,
+                desc: info[i].Desc,
+            };
+            planetList.push(planet);
+        }
+        setData(planetList);
+    }
+
+    useEffect(() => fetchData(), []);
     return (
         <SolarSystemPresneter
             state={state}
             getNextItem={getNextItem}
             getPrevItem={getPrevItem}
+            data={data}
         />
     );
 };
