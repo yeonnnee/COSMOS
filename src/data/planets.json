@@ -5,13 +5,15 @@
         "imgUrl":"https://space-facts.com/wp-content/uploads/mercury.png",
         "Desc": "The First planet from the Sun",
         "Mass": "330,104,000,000,000 billion kg(0.055 x Earth)",
-        "Equatorial Diameter": "4,879.4km",
-        "Polar Diameter":"4.879km",
-        "Orbit Period" : "87.97 Earth days",
-        "lenght of day": "4222.6 hours",
-        "Rotation Period": "1407.6 hours",
+        "Diameter": {
+            "EquatorialDiameter": "4,879.4km",
+            "PolarDiameter":"4.879km"
+        },
+        "OrbitPeriod" : "87.97 Earth days",
+        "lengthOfDay": "4222.6 hours",
+        "RotationPeriod": "1407.6 hours",
         "gravity":"3.7m/s2",
-        "Surface Temperature": "-173 ~ 427 °C"
+        "SurfaceTemperature": "-173 ~ 427 °C"
     },
     {
         "id": 2,
@@ -19,13 +21,15 @@
         "imgUrl" : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/PIA23791-Venus-NewlyProcessedView-20200608.jpg/220px-PIA23791-Venus-NewlyProcessedView-20200608.jpg",
         "Desc": "The Second planet from the Sun",
         "Mass": "4,867,320,000,000,000 billion kg",
-        "Equatorial Diameter": "12,104km",
-        "Polar Diameter":"12,104km",
-        "Orbit Period" : "224.70 Earth days",
-        "lenght of day": "2802 hours",
-        "Rotation Period": "-5832.5 hours",
+        "Diameter": {
+            "EquatorialDiameter": "12,104km",
+            "PolarDiameter":"12,104km"
+        },
+        "OrbitPeriod" : "224.70 Earth days",
+        "lengthOfDay": "2802 hours",
+        "RotationPeriod": "-5832.5 hours",
         "gravity":"8.9m/s2",
-        "Surface Temperature": "462 °C"
+        "SurfaceTemperature": "462 °C"
     },
     {
         "id": 3,
@@ -33,13 +37,15 @@
         "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1200px-The_Earth_seen_from_Apollo_17.jpg",
         "Desc": "The Third planet from the Sun",
         "Mass": "5,972,190,000,000,000 billion kg",
-        "Equatorial Diameter": "12,756km",
-        "Polar Diameter":"12,714km",
-        "Orbit Period" : "365.26 Earth days",
-        "lenght of day": "24 hours",
-        "Rotation Period": "23.9 hours",
+        "Diameter": {
+            "EquatorialDiameter": "12,756km",
+            "PolarDiameter":"12,714km"
+        },
+            "OrbitPeriod" : "365.26 Earth days",
+        "lengthOfDay": "24 hours",
+        "RotationPeriod": "23.9 hours",
         "gravity":"9.8m/s2",
-        "Surface Temperature": "-88 ~ 58 °C"
+        "SurfaceTemperature": "-88 ~ 58 °C"
     },
     {
         "id": 4,
@@ -47,13 +53,15 @@
         "imgUrl":"https://i.pinimg.com/564x/cc/b3/d3/ccb3d3f5e9876658f8844e67a70fc4c3.jpg",
         "Desc": "The Fourth planet from the Sun",
         "Mass": "641,693,000,000,000 billion kg(0.107 x Earth)",
-        "Equatorial Diameter": "6,779km",
-        "Polar Diameter": "6,752km",
-        "Orbit Period" : "686.98 Earth days(1.88 Earth years)",
-        "lenght of day": "24.7 hours",
-        "Rotation Period": "24.6 hours",
+        "Diameter": {
+            "EquatorialDiameter": "6,779km",
+            "PolarDiameter": "6,752km"
+        },
+            "OrbitPeriod" : "686.98 Earth days(1.88 Earth years)",
+        "lengthOfDay": "24.7 hours",
+        "RotationPeriod": "24.6 hours",
         "gravity":"3.7 m/s2",
-        "Surface Temperature": "-87 ~ -5 °C"
+        "SurfaceTemperature": "-87 ~ -5 °C"
     },
     {
         "id": 5,
@@ -61,13 +69,15 @@
         "imgUrl":"https://i.pinimg.com/564x/c4/31/0f/c4310fb649c4c7b3f7096e272826b65a.jpg",
         "Desc": "The Fifth planet from the Sun",
         "Mass": "1,898,130,000,000,000,000 billion kg(317.83 x Earth)",
-        "Equatorial Diameter": "142,984 km",
-        "Polar Diameter": "133,709 km",
-        "lenght of day": "9.9 hours",
-        "Orbit Period" : "4,332,82 Earth days(11.86 Earth years)",
-        "Rotation Period": "9.9 hours",
+        "Diameter": {
+            "EquatorialDiameter": "142,984 km",
+            "PolarDiameter": "133,709 km"
+        },
+            "lengthOfDay": "9.9 hours",
+        "OrbitPeriod" : "4,332,82 Earth days(11.86 Earth years)",
+        "RotationPeriod": "9.9 hours",
         "gravity":"23.1 m/s2",
-        "Surface Temperature": "-108 °C"
+        "SurfaceTemperature": "-108 °C"
     },
     {
         "id": 6,
@@ -75,13 +85,15 @@
         "imgUrl":"https://lh3.googleusercontent.com/proxy/QY2L_QSAevAW2filtug6Q7LCt1lHYjVd8t5DEkcag4WaWdhKmWoJU31NetSG6RbnRC-P0nWQk76JQqE6uPZj0B6F0uOWRVHoFfR0W2G5I4aOdQEto9RNQ7Ht701i0Mn8mr0qeNR6AB4M2FsKZse4x0aZY-lMO1UFykOy-mf2b6trcTs6H4ba6TSRGwdzEsbYwfYV572nIexEQhaxks9akJ1h4vnDOFGJXSOwKT8LMicUuc9FdvJ7D1iMPNlkREESBVyvgn2piu6C7ASb8L_gu3KXd2h9JEVpB4mrCK3e",
         "Desc": "The Sixth planet from the Sun",
         "Mass": "568,319,000,000,000,000 billion kg(95.16 x Earth)",
-        "Equatorial Diameter": "120,536 km",
-        "Polar Diameter": "108,728 km",
-        "Orbit Period" : "10,755.70 Earth days(29.45 Earth years)",
-        "lenght of day": "10.7 hours",
-        "Rotation Period": "10.7 hours",
+        "Diameter": {
+            "EquatorialDiameter": "120,536 km",
+            "PolarDiameter": "108,728 km"
+        },
+            "OrbitPeriod" : "10,755.70 Earth days(29.45 Earth years)",
+        "lengthOfDay": "10.7 hours",
+        "RotationPeriod": "10.7 hours",
         "gravity":"9.0 m/s2",
-        "Surface Temperature": "-139 °C"
+        "SurfaceTemperature": "-139 °C"
     },
     {
         "id": 7,
@@ -89,13 +101,15 @@
         "imgUrl":"https://i.pinimg.com/564x/75/af/6b/75af6be56c85efb589fd104f2715d414.jpg",
         "Desc": "The Seventh planet from the Sun",
         "Mass": "86,810,300,000,000,000 billion kg(14.536 x Earth)",
-        "Equatorial Diameter": "51,118 km",
-        "Polar Diameter": "49,946 km",
-        "Orbit Period" : "30,687 Earth days(84.02 Earth years)",
-        "lenght of day": "17.2 hours",
-        "Rotation Period": "-17.2 hours",
+        "Diameter": {
+            "EquatorialDiameter": "51,118 km",
+            "PolarDiameter": "49,946 km"
+        },
+        "OrbitPeriod" : "30,687 Earth days(84.02 Earth years)",
+        "lengthOfDay": "17.2 hours",
+        "RotationPeriod": "-17.2 hours",
         "gravity":"8.7 m/s2",
-        "Surface Temperature": "-197 °C"
+        "SurfaceTemperature": "-197 °C"
     },
     {
         "id": 8,
@@ -103,13 +117,15 @@
         "imgUrl":"https://cdn.mos.cms.futurecdn.net/eNTJrysq4A6DqXncBtsRrB.jpg",
         "Desc": "The Eighth planet from the Sun",
         "Mass": "102,410,000,000,000,000 billion kg(17.15 x Earth)",
-        "Equatorial Diameter": "49,528 km",
-        "Polar Diameter": "48,682 km",
-        "Orbit Period" : "60,190.03 Earth days(164.79 Earth years)",
-        "lenght of day": "16.1 hours",
-        "Rotation Period": "16.1 hours",
+        "Diameter": {
+            "EquatorialDiameter": "49,528 km",
+            "PolarDiameter": "48,682 km"
+        },
+        "OrbitPeriod" : "60,190.03 Earth days(164.79 Earth years)",
+        "lengthOfDay": "16.1 hours",
+        "RotationPeriod": "16.1 hours",
         "gravity":"11.0 m/s2",
-        "Surface Temperature": "-201 °C"
+        "SurfaceTemperature": "-201 °C"
     },
     {
         "id": 9,
@@ -118,10 +134,10 @@
         "Desc": "The Nineth planet from the Sun",
         "Mass": "13.05 sextillion kg(0.002 x Earth)",
         "Diameter": "2,370 km (± 20km)",
-        "Orbit Period" : "246 Earth years",
-        "lenght of day": "153.3 hours",
-        "Rotation Period": "-153.3 hours",
+        "OrbitPeriod" : "246 Earth years",
+        "lengthOfDay": "153.3 hours",
+        "RotationPeriod": "-153.3 hours",
         "gravity":"0.7 m/s2",
-        "Surface Temperature": "-229 °C"
+        "SurfaceTemperature": "-229 °C"
     }
 ]
