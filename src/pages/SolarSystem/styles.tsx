@@ -30,6 +30,9 @@ export const List = styled.ul`
     left: ${(props: IMove) => props.left + `px`};
     transition: left 0.5s ease-out;
 `;
+export const BookLink = styled(Link)`
+    text-decoration: none;
+`;
 
 export const Item = styled.li`
     border: 1px solid white;
@@ -55,13 +58,17 @@ export const Img = styled.div`
     align-items: center;
     justify-content: center;
 `;
-export const Btn = styled.span`
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 30px;
+export const Btn = styled.div`
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     &:hover {
-        border: 2px solid #ffeaa7;
+        border: 2px solid #d1ccc0;
     }
 `;
 

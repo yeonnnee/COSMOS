@@ -2,14 +2,7 @@ import React from "react";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Mercury from "../../img/mercury.png";
-import Earth from "../../img/earth.jpg";
-import Mars from "../../img/mars.jpg";
-import Jupiter from "../../img/jupiter.jpg";
-import Saturn from "../../img/saturn.jpg";
-import Uranus from "../../img/uranus.jpg";
-import Neptune from "../../img/neptune.jpg";
-import Pluto from "../../img/pluto.jpg";
+import data from "../../data/planets.json";
 import {
     Carousel,
     Item,
@@ -20,6 +13,7 @@ import {
     Info,
     Name,
     Desc,
+    BookLink,
 } from "./styles";
 
 interface Istate {
@@ -47,62 +41,17 @@ const SolarSystemPresneter: React.FunctionComponent<IProps> = (
             </Btn>
             <Carousel>
                 <List left={state.left}>
-                    <Item>
-                        <Img imgUrl={Mercury}></Img>
-                        <Info>
-                            <Name>MERCURY</Name>
-                            <Desc>First planet from the Sun</Desc>
-                        </Info>
-                    </Item>
-                    <Item>
-                        <Img imgUrl={Earth}></Img>
-                        <Info>
-                            <Name>EARTH</Name>
-                            <Desc>Second planet from the Sun</Desc>
-                        </Info>
-                    </Item>
-                    <Item>
-                        <Img imgUrl={Mars}></Img>
-                        <Info>
-                            <Name>MARS</Name>
-                            <Desc>Third planet from the Sun</Desc>
-                        </Info>
-                    </Item>
-                    <Item>
-                        <Img imgUrl={Jupiter}></Img>
-                        <Info>
-                            <Name>JUPITER</Name>
-                            <Desc>Fourth planet from the Sun</Desc>
-                        </Info>
-                    </Item>
-                    <Item>
-                        <Img imgUrl={Saturn}></Img>
-                        <Info>
-                            <Name> SATURN</Name>
-                            <Desc>Fifth planet from the Sun</Desc>
-                        </Info>
-                    </Item>
-                    <Item>
-                        <Img imgUrl={Uranus}></Img>
-                        <Info>
-                            <Name>URANUS</Name>
-                            <Desc>Sixth planet from the Sun</Desc>
-                        </Info>
-                    </Item>
-                    <Item>
-                        <Img imgUrl={Neptune}></Img>
-                        <Info>
-                            <Name>NEPTUNE</Name>
-                            <Desc>Seventh planet from the Sun</Desc>
-                        </Info>
-                    </Item>
-                    <Item>
-                        <Img imgUrl={Pluto}></Img>
-                        <Info>
-                            <Name> PLUTO</Name>
-                            <Desc>Eighth planet from the Sun</Desc>
-                        </Info>
-                    </Item>
+                    {data.map((planet, index) => (
+                        <BookLink to={`/planets/${planet.name}`} key={index}>
+                            <Item>
+                                <Img imgUrl={planet.imgUrl}></Img>
+                                <Info>
+                                    <Name>{planet.name}</Name>
+                                    <Desc>{planet.Desc}</Desc>
+                                </Info>
+                            </Item>
+                        </BookLink>
+                    ))}
                 </List>
             </Carousel>
             <Btn onClick={getNextItem}>
