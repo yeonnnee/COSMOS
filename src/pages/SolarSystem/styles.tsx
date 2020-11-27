@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-interface IMove {
+interface IListProps {
     left: number;
+    ItemNum: number;
 }
 
 interface ImageProps {
@@ -24,10 +25,13 @@ export const Carousel = styled.div`
 export const List = styled.ul`
     position: absolute;
     display: grid;
-    grid-template-columns: repeat(8, 350px);
+    grid-template-columns: repeat(
+        ${(props: IListProps) => props.ItemNum},
+        350px
+    );
     grid-template-rows: 500px;
     gap: 20px;
-    left: ${(props: IMove) => props.left + `px`};
+    left: ${(props: IListProps) => props.left + `px`};
     transition: left 0.5s ease-out;
 `;
 export const BookLink = styled(Link)`
