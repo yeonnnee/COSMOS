@@ -2,12 +2,13 @@
     {
         "id": 1,
         "name": "MERCURY",
-        "imgUrl":"https://space-facts.com/wp-content/uploads/mercury.png",
+        "imgUrl":"https://user-images.githubusercontent.com/61894688/100516116-d31a4f80-31c4-11eb-9f8e-8a610653666f.png",
         "Desc": "The First planet from the Sun",
+        "detail":"The smallest planet in our solar system and nearest to the Sun, Mercury is only slightly larger than Earth's Moon. The Latest October 2020 - Part II: The Next Full Moon is a Halloween Hunter's Moon and Micro Moon From the surface of Mercury, the Sun would appear more than three times as large as it does when viewed from Earth, and the sunlight would be as much as seven times brighter. Despite its proximity to the Sun, Mercury is not the hottest planet in our solar system – that title belongs to nearby Venus, thanks to its dense atmosphere.",
         "Mass": "330,104,000,000,000 billion kg(0.055 x Earth)",
         "Diameter": {
-            "EquatorialDiameter": "4,879.4km",
-            "PolarDiameter":"4.879km"
+            "EquatorialDiameter": "4,879.4 km",
+            "PolarDiameter":"4.879 km"
         },
         "OrbitPeriod" : "87.97 Earth days",
         "lengthOfDay": "4222.6 hours",
@@ -18,12 +19,13 @@
     {
         "id": 2,
         "name": "VENUS",
-        "imgUrl" : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/PIA23791-Venus-NewlyProcessedView-20200608.jpg/220px-PIA23791-Venus-NewlyProcessedView-20200608.jpg",
+        "imgUrl" : "https://user-images.githubusercontent.com/61894688/100516195-91d66f80-31c5-11eb-9ae4-038d7607e7aa.jpg",
         "Desc": "The Second planet from the Sun",
+        "detail":"Similar in size and structure to Earth, Venus has been called Earth's twin. These are not identical twins, however – there are radical differences between the two worlds.Venus has a thick, toxic atmosphere filled with carbon dioxide and it’s perpetually shrouded in thick, yellowish clouds of mostly sulfuric acid that trap heat, causing a runaway greenhouse effect. It’s the hottest planet in our solar system, even though Mercury is closer to the Sun. Venus has crushing air pressure at its surface – more than 90 times that of Earth – similar to the pressure you'd encounter a mile below the ocean on Earth.",
         "Mass": "4,867,320,000,000,000 billion kg",
         "Diameter": {
-            "EquatorialDiameter": "12,104km",
-            "PolarDiameter":"12,104km"
+            "EquatorialDiameter": "12,104 km",
+            "PolarDiameter":"12,104 km"
         },
         "OrbitPeriod" : "224.70 Earth days",
         "lengthOfDay": "2802 hours",
@@ -34,8 +36,9 @@
     {
         "id": 3,
         "name": "EARTH",
-        "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1200px-The_Earth_seen_from_Apollo_17.jpg",
+        "imgUrl":"https://user-images.githubusercontent.com/61894688/100516154-3dcb8b00-31c5-11eb-9010-53eaaad35383.jpg",
         "Desc": "The Third planet from the Sun",
+        "detail":"Our home planet is the third planet from the Sun, and the only place we know of so far that’s inhabited by living things.",
         "Mass": "5,972,190,000,000,000 billion kg",
         "Diameter": {
             "EquatorialDiameter": "12,756km",
@@ -50,8 +53,9 @@
     {
         "id": 4,
         "name": "MARS",
-        "imgUrl":"https://i.pinimg.com/564x/cc/b3/d3/ccb3d3f5e9876658f8844e67a70fc4c3.jpg",
+        "imgUrl":"https://user-images.githubusercontent.com/61894688/100516243-e4b02700-31c5-11eb-9994-918c3d9942a5.jpg",
         "Desc": "The Fourth planet from the Sun",
+        "detail":"The fourth planet from the Sun, Mars is a dusty, cold, desert world with a very thin atmosphere.This dynamic planet has seasons, polar ice caps, canyons, extinct volcanoes, and evidence that it was even more active in the past.",
         "Mass": "641,693,000,000,000 billion kg(0.107 x Earth)",
         "Diameter": {
             "EquatorialDiameter": "6,779km",
@@ -66,8 +70,9 @@
     {
         "id": 5,
         "name": "JUPITER",
-        "imgUrl":"https://i.pinimg.com/564x/c4/31/0f/c4310fb649c4c7b3f7096e272826b65a.jpg",
+        "imgUrl":"https://user-images.githubusercontent.com/61894688/100516269-0f9a7b00-31c6-11eb-8a70-b50a71348a3d.jpg",
         "Desc": "The Fifth planet from the Sun",
+        "detail":"Fifth in line from the Sun, Jupiter is, by far, the largest planet in the solar system – more than twice as massive as all the other planets combined.Jupiter's familiar stripes and swirls are actually cold, windy clouds of ammonia and water, floating in an atmosphere of hydrogen and helium. Jupiter’s iconic Great Red Spot is a giant storm bigger than Earth that has raged for hundreds of years.",
         "Mass": "1,898,130,000,000,000,000 billion kg(317.83 x Earth)",
         "Diameter": {
             "EquatorialDiameter": "142,984 km",
@@ -82,8 +87,9 @@
     {
         "id": 6,
         "name": "SATURN",
-        "imgUrl":"https://lh3.googleusercontent.com/proxy/QY2L_QSAevAW2filtug6Q7LCt1lHYjVd8t5DEkcag4WaWdhKmWoJU31NetSG6RbnRC-P0nWQk76JQqE6uPZj0B6F0uOWRVHoFfR0W2G5I4aOdQEto9RNQ7Ht701i0Mn8mr0qeNR6AB4M2FsKZse4x0aZY-lMO1UFykOy-mf2b6trcTs6H4ba6TSRGwdzEsbYwfYV572nIexEQhaxks9akJ1h4vnDOFGJXSOwKT8LMicUuc9FdvJ7D1iMPNlkREESBVyvgn2piu6C7ASb8L_gu3KXd2h9JEVpB4mrCK3e",
+        "imgUrl":"https://user-images.githubusercontent.com/61894688/100516049-453e6480-31c4-11eb-8b20-d36e0730303c.png",
         "Desc": "The Sixth planet from the Sun",
+        "detail":"Saturn is the sixth planet from the Sun and the second largest planet in our solar system.Adorned with thousands of beautiful ringlets, Saturn is unique among the planets. It is not the only planet to have rings—made of chunks of ice and rock—but none are as spectacular or as complicated as Saturn's",
         "Mass": "568,319,000,000,000,000 billion kg(95.16 x Earth)",
         "Diameter": {
             "EquatorialDiameter": "120,536 km",
@@ -98,8 +104,9 @@
     {
         "id": 7,
         "name": "URANUS",
-        "imgUrl":"https://i.pinimg.com/564x/75/af/6b/75af6be56c85efb589fd104f2715d414.jpg",
+        "imgUrl":"https://user-images.githubusercontent.com/61894688/100516205-a7e43000-31c5-11eb-8e2d-24e9e3c00aa1.jpg",
         "Desc": "The Seventh planet from the Sun",
+        "detail":"Uranus was the first planet found using a telescope. Uranus has 27 known moons, most of which are named after literary characters. Like Saturn, Jupiter and Neptune, Uranus is a ringed planet. Uranus is known as the “sideways planet” because it rotates on its side",
         "Mass": "86,810,300,000,000,000 billion kg(14.536 x Earth)",
         "Diameter": {
             "EquatorialDiameter": "51,118 km",
@@ -114,8 +121,9 @@
     {
         "id": 8,
         "name": "NEPTUNE",
-        "imgUrl":"https://cdn.mos.cms.futurecdn.net/eNTJrysq4A6DqXncBtsRrB.jpg",
+        "imgUrl":"https://user-images.githubusercontent.com/61894688/100516112-d0b7f580-31c4-11eb-8cf7-7fe62238e6b5.jpg",
         "Desc": "The Eighth planet from the Sun",
+        "detail":"Dark, cold and whipped by supersonic winds, ice giant Neptune is the eighth and most distant planet in our solar system.More than 30 times as far from the Sun as Earth, Neptune is the only planet in our solar system not visible to the naked eye and the first predicted by mathematics before its discovery.",
         "Mass": "102,410,000,000,000,000 billion kg(17.15 x Earth)",
         "Diameter": {
             "EquatorialDiameter": "49,528 km",
@@ -130,8 +138,9 @@
     {
         "id": 9,
         "name": "PLUTO",
-        "imgUrl":"https://i.pinimg.com/564x/65/17/34/6517347db207ca58b8094a4b3a9c1141.jpg",
+        "imgUrl":"https://user-images.githubusercontent.com/61894688/100516090-a403de00-31c4-11eb-9780-99292383887a.jpg",
         "Desc": "The Nineth planet from the Sun",
+        "detail":"Pluto’s classification as a planet has had a history of changes. Since 2006, per the International Astronomical Union’s planetary criteria, Pluto isn’t considered a planet because it hasn’t cleared the neighborhood around its orbit of other objects. However, it does meet IAU’s criteria for what constitutes a dwarf planet.Pluto – which is smaller than Earth’s Moon – has a heart-shaped glacier that’s the size of Texas and Oklahoma. This fascinating world has blue skies, spinning moons, mountains as high as the Rockies, and it snows – but the snow is red.",
         "Mass": "13.05 sextillion kg(0.002 x Earth)",
         "Diameter": "2,370 km (± 20km)",
         "OrbitPeriod" : "246 Earth years",
