@@ -18,10 +18,10 @@ const NavItem = styled.li``;
 const NavLink = styled(Link)`
     text-decoration: none;
     color: ${(props: ILink) =>
-        props.current === "true" ? "#3c6382" : "#6a89cc"};
+        props.current === "true" ? "#cf6a87" : "#f5f6fa"};
     margin-left: 10px;
     &:hover {
-        color: #3c6382;
+        color: #cf6a87;
     }
 `;
 
@@ -41,22 +41,20 @@ const Navigation = withRouter((navProps) => {
             <Nav show={location.pathname === "/" ? "true" : "false"}>
                 <NavList>
                     <NavLink
-                        to="/today"
+                        to="/gallery"
                         current={
-                            location.pathname === "/today" ? "true" : "false"
+                            location.pathname === "/gallery" ? "true" : "false"
                         }
                     >
-                        <NavItem>Today</NavItem>
+                        <NavItem>Gallery</NavItem>
                     </NavLink>
                     <NavLink
-                        to="/SolarSystem"
+                        to="/planets"
                         current={
-                            location.pathname === "/SolarSystem"
-                                ? "true"
-                                : "false"
+                            location.pathname === "/planets" ? "true" : "false"
                         }
                     >
-                        <NavItem>SolarSystem</NavItem>
+                        <NavItem>Planets</NavItem>
                     </NavLink>
                 </NavList>
             </Nav>
