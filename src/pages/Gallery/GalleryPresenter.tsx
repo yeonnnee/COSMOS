@@ -12,7 +12,7 @@ interface Istate {
     apod: Iapod;
 }
 
-const HomePresenter: React.FunctionComponent<Istate> = (homeProps) => {
+const GalleryPresenter: React.FunctionComponent<Istate> = (homeProps) => {
     const { apod } = homeProps;
     return (
         <Main>
@@ -35,4 +35,4 @@ const HomePresenter: React.FunctionComponent<Istate> = (homeProps) => {
     );
 };
 
-export default HomePresenter;
+export default GalleryPresenter;

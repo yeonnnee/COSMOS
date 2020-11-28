@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { nasaApi } from "../../api";
 
-import HomePresenter from "./HomePresenter";
+import GalleryPresenter from "./GalleryPresenter";
 
-const Home: () => JSX.Element = () => {
+const Gallery: () => JSX.Element = () => {
     const [apod, setApod] = useState({
         date: "",
         explanation: "",
@@ -28,7 +28,7 @@ const Home: () => JSX.Element = () => {
     useEffect(() => {
         FetchData();
     }, []);
-    return <HomePresenter apod={apod} />;
+    return <GalleryPresenter apod={apod} />;
 };
 
-export default Home;
+export default Gallery;
