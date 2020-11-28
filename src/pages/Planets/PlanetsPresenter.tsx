@@ -34,10 +34,8 @@ interface IProps {
     data: Array<IData>;
 }
 
-const SolarSystemPresneter: React.FunctionComponent<IProps> = (
-    solarSystemProps
-) => {
-    const { state, getNextItem, getPrevItem, data } = solarSystemProps;
+const PlanetsPresenter: React.FunctionComponent<IProps> = (PlanetsProps) => {
+    const { state, getNextItem, getPrevItem, data } = PlanetsProps;
 
     return (
         <Main>
@@ -66,4 +64,4 @@ const SolarSystemPresneter: React.FunctionComponent<IProps> = (
     );
 };
 
-export default SolarSystemPresneter;
+export default PlanetsPresenter;

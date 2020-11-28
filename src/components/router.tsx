@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Cover from "../pages/Cover";
 import Home from "../pages/Home";
 import Navigation from "./Navigation";
-import SolarSystem from "../pages/SolarSystem";
+import Planets from "../pages/Planets";
 import Detail from "../pages/Detail";
 
 const Router: () => JSX.Element = () => {
@@ -13,7 +13,7 @@ const Router: () => JSX.Element = () => {
             <Navigation />
             <Route path="/" exact component={Cover} />
             <Route path="/today" exact component={Home} />
-            <Route path="/SolarSystem" exact component={SolarSystem} />
+            <Route path="/planets" exact component={Planets} />
             <Route path="/planets/:id" exact component={Detail} />
         </BrowserRouter>
     );

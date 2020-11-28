@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SolarSystemPresneter from "./SolarSystemPresenter";
+import PlanetsPresenter from "./PlanetsPresenter";
 import info from "../../data/planets.json";
 
-const SolarSystem: () => JSX.Element = () => {
+const Planets: () => JSX.Element = () => {
     const [state, setState] = useState({
         currentGroup: 1,
         left: 0,
@@ -60,7 +60,7 @@ const SolarSystem: () => JSX.Element = () => {
 
     useEffect(() => fetchData(), []);
     return (
-        <SolarSystemPresneter
+        <PlanetsPresenter
             state={state}
             getNextItem={getNextItem}
             getPrevItem={getPrevItem}
@@ -69,4 +69,4 @@ const SolarSystem: () => JSX.Element = () => {
     );
 };
 
-export default SolarSystem;
+export default Planets;
