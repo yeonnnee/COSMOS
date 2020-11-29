@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 interface IDiameter {
     EquatorialDiameter: string;
@@ -40,7 +41,11 @@ const Section = styled.section`
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-rows: 1fr;
+    @media only screen and (max-width: 1050px) {
+        grid-template-rows: 1fr 1fr;
+    }
 `;
 const Img = styled.div`
     width: 100%;
@@ -52,7 +57,7 @@ const Intro = styled.div`
 `;
 const Name = styled.div`
     font-family: "Texturina", serif;
-    font-size: 35px;
+    font-size: 40px;
     color: #f1c40f;
 `;
 const Desc = styled.div`
@@ -67,7 +72,6 @@ const Info = styled.section`
     width: 97%;
     border: 1px solid white;
     border-radius: 20px;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(158, 156, 156, 0.4);
     color: white;
     position: fixed;
@@ -75,6 +79,10 @@ const Info = styled.section`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     gap: 5px;
+    @media only screen and (max-width: 1050px) {
+        position: relative;
+        margin-top: 50px;
+    }
 `;
 const Column = styled.div`
     width: 100%;
@@ -102,6 +110,24 @@ const SmallText = styled.div`
     top: -18px;
     opacity: 0.7;
 `;
+const BuyBtn = styled(Link)`
+    width: 130px;
+    height: 50px;
+    text-decoration: none;
+    border: 1px solid#f1c40f;
+    font-size: 18px;
+    font-family: "Raleway", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #f1c40f;
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(158, 156, 156, 0.4);
+    }
+`;
 
 const DetailPresenter: React.FunctionComponent<IDatailProps> = (
     detailProps
@@ -113,6 +139,7 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
                 <Intro>
                     <Name>{planet[0].name}</Name>
                     <Desc>{planet[0].detail}</Desc>
+                    <BuyBtn to="/cosmos/buyTicket">Buy Ticket</BuyBtn>
                 </Intro>
                 <Img bgImg={planet[0].imgUrl}></Img>
             </Section>

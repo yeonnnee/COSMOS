@@ -6,6 +6,7 @@ import Gallery from "../pages/Gallery";
 import Navigation from "./Navigation";
 import Planets from "../pages/Planets";
 import Detail from "../pages/Detail";
+import Tickets from "../pages/Tickets";
 
 const Router: () => JSX.Element = () => {
     return (
@@ -15,6 +16,7 @@ const Router: () => JSX.Element = () => {
             <Route path="/cosmos/gallery" exact component={Gallery} />
             <Route path="/cosmos/planets" exact component={Planets} />
             <Route path="/cosmos/planets/:id" exact component={Detail} />
+            <Route path="/cosmos/buyTicket" exact component={Tickets} />
         </BrowserRouter>
     );
 };
