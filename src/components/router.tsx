@@ -12,9 +12,9 @@ const Router: () => JSX.Element = () => {
         <BrowserRouter>
             <Navigation />
             <Route path="/" exact component={Cover} />
-            <Route path="/gallery" exact component={Gallery} />
-            <Route path="/planets" exact component={Planets} />
-            <Route path="/planets/:id" exact component={Detail} />
+            <Route path="/cosmos/gallery" exact component={Gallery} />
+            <Route path="/cosmos/planets" exact component={Planets} />
+            <Route path="/cosmos/planets/:id" exact component={Detail} />
         </BrowserRouter>
     );
 };

@@ -16,7 +16,7 @@ const CoverPresenter: () => JSX.Element = () => {
                 </Desc>
             </Section>
             <Section>
-                <Button to="/planets">Read More</Button>
+                <Button to="/cosmos/planets">Read More</Button>
             </Section>
         </Main>
     );

@@ -41,7 +41,7 @@ const Navigation = withRouter((navProps) => {
             <Nav show={location.pathname === "/" ? "true" : "false"}>
                 <NavList>
                     <NavLink
-                        to="/gallery"
+                        to="/cosmos/gallery"
                         current={
                             location.pathname === "/gallery" ? "true" : "false"
                         }
@@ -49,9 +49,11 @@ const Navigation = withRouter((navProps) => {
                         <NavItem>Gallery</NavItem>
                     </NavLink>
                     <NavLink
-                        to="/planets"
+                        to="/cosmos/planets"
                         current={
-                            location.pathname === "/planets" ? "true" : "false"
+                            location.pathname.includes("planets")
+                                ? "true"
+                                : "false"
                         }
                     >
                         <NavItem>Planets</NavItem>

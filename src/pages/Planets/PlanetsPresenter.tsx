@@ -45,7 +45,10 @@ const PlanetsPresenter: React.FunctionComponent<IProps> = (PlanetsProps) => {
             <Carousel>
                 <List left={state.left} ItemNum={data.length}>
                     {data.map((planet, index) => (
-                        <BookLink to={`/planets/${planet.name}`} key={index}>
+                        <BookLink
+                            to={`/cosmos/planets/${planet.name}`}
+                            key={index}
+                        >
                             <Item>
                                 <Img imgUrl={planet.imgUrl}></Img>
                                 <Info>
