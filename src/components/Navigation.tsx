@@ -7,9 +7,13 @@ const Nav = styled.nav`
     width: 100%;
     height: 50px;
     padding: 20px;
+    margin-top: 40px;
     font-family: "Texturina", serif;
     display: ${(props: INav) => (props.show === "true" ? "none" : "flex")};
     justify-content: center;
+    background-color: ${(props: INav) => props.color};
+    position: fixed;
+    z-index: 1;
 `;
 const NavList = styled.ul`
     display: flex;
@@ -31,6 +35,7 @@ interface ILink {
 
 interface INav {
     show: string;
+    color: string;
 }
 
 const Navigation = withRouter((navProps) => {
@@ -38,12 +43,21 @@ const Navigation = withRouter((navProps) => {
     return (
         <>
             <Header />
-            <Nav show={location.pathname === "/" ? "true" : "false"}>
+            <Nav
+                show={location.pathname === "/" ? "true" : "false"}
+                color={
+                    location.pathname.includes("tickets")
+                        ? "rgba(158, 156, 156, 0.4)"
+                        : "#181717"
+                }
+            >
                 <NavList>
                     <NavLink
                         to="/cosmos/gallery"
                         current={
-                            location.pathname === "/gallery" ? "true" : "false"
+                            location.pathname.includes("gallery")
+                                ? "true"
+                                : "false"
                         }
                     >
                         <NavItem>Gallery</NavItem>
@@ -57,6 +71,16 @@ const Navigation = withRouter((navProps) => {
                         }
                     >
                         <NavItem>Planets</NavItem>
+                    </NavLink>
+                    <NavLink
+                        to="/cosmos/tickets"
+                        current={
+                            location.pathname.includes("tickets")
+                                ? "true"
+                                : "false"
+                        }
+                    >
+                        <NavItem>Tickets</NavItem>
                     </NavLink>
                 </NavList>
             </Nav>
