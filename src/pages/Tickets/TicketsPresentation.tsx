@@ -123,8 +123,10 @@ interface MainProps {
 interface TicketsPresentationProps {
     departureDate: DayValue;
     lastDate: DayValue;
-    selectDepartureDate: (e: DayValue) => void;
-    selectLastDate: (e: DayValue) => void;
+    selectDepartureDate: (val: DayValue) => void;
+    selectLastDate: (val: DayValue) => void;
+    selectDepartures: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    selectDestination: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
     TicketsProps
@@ -134,6 +136,8 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
         lastDate,
         selectDepartureDate,
         selectLastDate,
+        selectDepartures,
+        selectDestination,
     } = TicketsProps;
 
     return (
@@ -155,7 +159,7 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                         Departures
                         <Icon icon={faMapMarkerAlt} />
                     </Label>
-                    <Select>
+                    <Select onChange={selectDepartures}>
                         <Option value=""></Option>
                         <Option value="MERCURY">MERCURY</Option>
                         <Option value="VENUS">VENUS</Option>
@@ -173,7 +177,7 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                         Destination
                         <Icon icon={faMapMarkerAlt} />
                     </Label>
-                    <Select>
+                    <Select onChange={selectDestination}>
                         <Option value=""></Option>
                         <Option value="MERCURY">MERCURY</Option>
                         <Option value="VENUS">VENUS</Option>
