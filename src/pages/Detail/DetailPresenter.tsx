@@ -139,7 +139,7 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
                 <Intro>
                     <Name>{planet[0].name}</Name>
                     <Desc>{planet[0].detail}</Desc>
-                    <BuyBtn to="/cosmos/buyTicket">Buy Ticket</BuyBtn>
+                    <BuyBtn to="/cosmos/tickets">Buy Ticket</BuyBtn>
                 </Intro>
                 <Img bgImg={planet[0].imgUrl}></Img>
             </Section>

@@ -16,7 +16,7 @@ const Router: () => JSX.Element = () => {
             <Route path="/cosmos/gallery" exact component={Gallery} />
             <Route path="/cosmos/planets" exact component={Planets} />
             <Route path="/cosmos/planets/:id" exact component={Detail} />
-            <Route path="/cosmos/buyTicket" exact component={Tickets} />
+            <Route path="/cosmos/tickets" component={Tickets} />
         </BrowserRouter>
     );
 };
