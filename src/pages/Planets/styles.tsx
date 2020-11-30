@@ -11,7 +11,6 @@ interface ImageProps {
 
 export const Main = styled.main`
     padding: 20px;
-    margin-top: 150px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -21,6 +20,7 @@ export const Carousel = styled.div`
     overflow: hidden;
     position: relative;
     height: 500px;
+    margin-top: 200px;
 `;
 export const List = styled.ul`
     position: absolute;

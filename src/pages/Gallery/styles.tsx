@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-    margin-top: 50px;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -10,6 +9,7 @@ export const Main = styled.main`
 export const Section = styled.section`
     width: 100%;
     padding: 20px;
+    margin-top: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
