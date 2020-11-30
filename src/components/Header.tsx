@@ -8,19 +8,23 @@ const HeaderSection = styled.header`
     width: 100%;
     height: 30px;
     padding: 20px;
+    background-color: ${(props: Iheader) => props.color};
     font-family: "Texturina", serif;
     display: ${(props: Iheader) => (props.show === "true" ? "none" : "flex")};
     justify-content: center;
-`;
-
-const Icon = styled(FontAwesomeIcon)`
-    font-size: 20px;
-    display: none;
+    position: fixed;
+    z-index: 1;
 `;
 
 const Text = styled.span`
     cursor: pointer;
-    &:hover + ${Icon} {
+    display: none;
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+    font-size: 20px;
+
+    &:hover + ${Text} {
         display: block;
     }
 
@@ -37,15 +41,23 @@ const HeaderLink = styled(Link)`
 
 interface Iheader {
     show: string;
+    color: string;
 }
 
 const Header: () => JSX.Element = () => {
     return (
-        <HeaderSection show={location.pathname === "/" ? "true" : "false"}>
+        <HeaderSection
+            show={location.pathname === "/" ? "true" : "false"}
+            color={
+                location.pathname.includes("tickets")
+                    ? "rgba(158, 156, 156, 0.4)"
+                    : "#181717"
+            }
+        >
             <Title>
                 <HeaderLink to="/cosmos/planets">
-                    <Text>COSMOS</Text>
                     <Icon icon={faRocket} />
+                    <Text>COSMOS</Text>
                 </HeaderLink>
             </Title>
         </HeaderSection>
