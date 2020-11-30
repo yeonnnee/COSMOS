@@ -17,7 +17,10 @@ const Main = styled.main`
     padding: 200px;
     background-image: url(${(props: MainProps) => props.bgImg});
     background-size: cover;
+    display: grid;
+    grid-template-rows: repeat(4 1fr);
 `;
+
 const Title = styled.div`
     font-family: "Castoro", serif;
     font-size: 50px;
@@ -40,13 +43,15 @@ const Search = styled.div`
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-template-rows: auto;
+    grid-template-rows: 1fr;
     gap: 20px;
     margin-top: 50px;
     border: 1px solid white;
+    @media only screen and (max-width: 850px) {
+        padding: 20px 40px;
+    }
 `;
 const Column = styled.div`
-    width: 100%;
     display: flex;
     flex-direction: column;
     font-family: "Texturina", serif;
@@ -97,7 +102,6 @@ const Wrapper = styled.div`
     width: 100%;
 `;
 const Date = styled.div`
-    width: 100%;
     height: 42px;
     display: flex;
     align-items: center;
@@ -218,6 +222,7 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
             <Section>
                 <SearchBtn to="/cosmos/tickets/search">Search</SearchBtn>
             </Section>
+
             <Section>
                 <Route
                     path="/cosmos/tickets/search"
