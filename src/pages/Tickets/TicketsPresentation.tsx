@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Route, Link } from "react-router-dom";
+
+import SearchTickets from "../SearchTickets";
 
 const Main = styled.main`
     width: 100%;
@@ -8,7 +11,12 @@ const Main = styled.main`
     background-image: url(${(props: MainProps) => props.bgImg});
     background-size: cover;
 `;
-const Title = styled.div``;
+const Title = styled.div`
+    font-family: "Castoro", serif;
+    font-size: 50px;
+    line-height: 1.3;
+    text-align: center;
+`;
 const Text = styled.div`
     margin-top: 20px;
     text-align: center;
@@ -35,7 +43,7 @@ const Column = styled.div`
     display: flex;
     flex-direction: column;
 `;
-const SearchBtn = styled.div`
+const SearchBtn = styled(Link)`
     width: 150px;
     height: 50px;
     margin-top: 20px;
@@ -44,6 +52,8 @@ const SearchBtn = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    text-decoration: none;
+    color: white;
 `;
 const Select = styled.select`
     width: 100%;
@@ -73,10 +83,11 @@ const TicketsPresentation: () => JSX.Element = () => {
     return (
         <Main bgImg="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80">
             <Section>
-                <Title>Explore Wonderful Space</Title>
+                <Title>
+                    Explore
+                    <br /> Wonderful Space
+                </Title>
                 <Text>
-                    Dream comes ture.
-                    <br />
                     Space travel is not dream anymore. <br />
                     Explore Space and feel Magnificence of the Nature
                 </Text>
@@ -121,7 +132,13 @@ const TicketsPresentation: () => JSX.Element = () => {
                 </Column>
             </Search>
             <Section>
-                <SearchBtn>Search</SearchBtn>
+                <SearchBtn to="/cosmos/tickets/search">Search</SearchBtn>
+            </Section>
+            <Section>
+                <Route
+                    path="/cosmos/tickets/search"
+                    component={SearchTickets}
+                />
             </Section>
         </Main>
     );
