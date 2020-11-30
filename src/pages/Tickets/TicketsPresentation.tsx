@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import DatePicker, { DayValue } from "react-modern-calendar-datepicker";
+import {
+    faMapMarkerAlt,
+    faCalendarCheck,
+} from "@fortawesome/free-solid-svg-icons";
 
 import SearchTickets from "../SearchTickets";
 
@@ -23,7 +30,7 @@ const Text = styled.div`
     line-height: 1.3;
 `;
 
-const Section = styled.div`
+const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,15 +40,16 @@ const Search = styled.div`
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-template-rows: 1fr;
-    gap: 10px;
-    border: 1px solid white;
+    grid-template-rows: auto;
+    gap: 20px;
     margin-top: 50px;
+    border: 1px solid white;
 `;
 const Column = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    font-family: "Texturina", serif;
 `;
 const SearchBtn = styled(Link)`
     width: 150px;
@@ -54,32 +62,80 @@ const SearchBtn = styled(Link)`
     cursor: pointer;
     text-decoration: none;
     color: white;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    &:hover {
+        background-color: rgba(158, 156, 156, 0.4);
+    }
 `;
 const Select = styled.select`
     width: 100%;
     margin-top: 20px;
-    padding: 10px 0;
+    padding: 10px;
     background-color: rgba(158, 156, 156, 0.4);
+    font-family: "Raleway", sans-serif;
+    color: #f1c40f;
+    font-size: 15px;
+    font-weight: bold;
+    &:hover {
+        border: 1px solid white;
+    }
 `;
-const Option = styled.option``;
+const Option = styled.option`
+    color: #2980b9;
+    font-weight: bold;
+`;
 const Label = styled.span``;
+const Icon = styled(FontAwesomeIcon)`
+    margin-left: 10px;
+`;
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 9px;
+    width: 100%;
 `;
 const Date = styled.div`
-    width: 250px;
-    border: 1px solid white;
-    margin: 10px;
-    height: 40px;
+    width: 100%;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 5px;
+    margin-top: 10px;
+    cursor: default;
+    background-color: rgba(158, 156, 156, 0.4);
+    &:hover {
+        border: 1px solid white;
+    }
 `;
+const Span = styled.span`
+    padding: 0 10px;
+    font-size: 15px;
+    font-weight: bold;
+`;
+
 interface MainProps {
     bgImg: string;
 }
 
-const TicketsPresentation: () => JSX.Element = () => {
+interface TicketsPresentationProps {
+    departureDate: DayValue;
+    lastDate: DayValue;
+    selectDepartureDate: (e: DayValue) => void;
+    selectLastDate: (e: DayValue) => void;
+}
+const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
+    TicketsProps
+) => {
+    const {
+        departureDate,
+        lastDate,
+        selectDepartureDate,
+        selectLastDate,
+    } = TicketsProps;
+
     return (
         <Main bgImg="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80">
             <Section>
@@ -95,7 +151,10 @@ const TicketsPresentation: () => JSX.Element = () => {
 
             <Search>
                 <Column>
-                    <Label>Departures</Label>
+                    <Label>
+                        Departures
+                        <Icon icon={faMapMarkerAlt} />
+                    </Label>
                     <Select>
                         <Option value=""></Option>
                         <Option value="MERCURY">MERCURY</Option>
@@ -110,7 +169,10 @@ const TicketsPresentation: () => JSX.Element = () => {
                     </Select>
                 </Column>
                 <Column>
-                    <Label>Destination</Label>
+                    <Label>
+                        Destination
+                        <Icon icon={faMapMarkerAlt} />
+                    </Label>
                     <Select>
                         <Option value=""></Option>
                         <Option value="MERCURY">MERCURY</Option>
@@ -127,7 +189,25 @@ const TicketsPresentation: () => JSX.Element = () => {
                 <Column>
                     <Label>Date</Label>
                     <Wrapper>
-                        <Date></Date>~<Date></Date>
+                        <Date>
+                            <DatePicker
+                                value={departureDate}
+                                onChange={selectDepartureDate}
+                                calendarClassName="responsive-calendar"
+                                shouldHighlightWeekends
+                            />
+                            <Icon icon={faCalendarCheck} />
+                        </Date>
+                        <Span>~</Span>
+                        <Date>
+                            <DatePicker
+                                value={lastDate}
+                                onChange={selectLastDate}
+                                calendarClassName="responsive-calendar"
+                                shouldHighlightWeekends
+                            />
+                            <Icon icon={faCalendarCheck} />
+                        </Date>
                     </Wrapper>
                 </Column>
             </Search>
