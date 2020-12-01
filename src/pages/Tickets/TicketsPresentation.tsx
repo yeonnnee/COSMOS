@@ -7,6 +7,7 @@ import DatePicker, { DayValue } from "react-modern-calendar-datepicker";
 import {
     faMapMarkerAlt,
     faCalendarCheck,
+    faUserAstronaut,
 } from "@fortawesome/free-solid-svg-icons";
 
 import SearchTickets from "../SearchTickets";
@@ -42,9 +43,9 @@ const Section = styled.section`
 const Search = styled.div`
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 1fr;
-    gap: 20px;
+    gap: 30px;
     margin-top: 50px;
     border: 1px solid white;
     @media only screen and (max-width: 850px) {
@@ -107,7 +108,7 @@ const Date = styled.div`
     align-items: center;
     justify-content: space-around;
     padding: 0 5px;
-    margin-top: 10px;
+    margin-top: 12px;
     cursor: default;
     background-color: rgba(158, 156, 156, 0.4);
     &:hover {
@@ -195,7 +196,10 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                     </Select>
                 </Column>
                 <Column>
-                    <Label>Date</Label>
+                    <Label>
+                        Date
+                        <Icon icon={faCalendarCheck} />
+                    </Label>
                     <Wrapper>
                         <Date>
                             <DatePicker
@@ -203,8 +207,8 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                                 onChange={selectDepartureDate}
                                 calendarClassName="responsive-calendar"
                                 shouldHighlightWeekends
+                                inputPlaceholder="From.."
                             />
-                            <Icon icon={faCalendarCheck} />
                         </Date>
                         <Span>~</Span>
                         <Date>
@@ -213,10 +217,27 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                                 onChange={selectLastDate}
                                 calendarClassName="responsive-calendar"
                                 shouldHighlightWeekends
+                                inputPlaceholder="To.."
                             />
-                            <Icon icon={faCalendarCheck} />
                         </Date>
                     </Wrapper>
+                </Column>
+                <Column>
+                    <Label>
+                        Passenger <Icon icon={faUserAstronaut} />
+                    </Label>
+                    <Select>
+                        <Option value=""></Option>
+                        <Option value="1">1</Option>
+                        <Option value="2">2</Option>
+                        <Option value="3">3</Option>
+                        <Option value="4">4</Option>
+                        <Option value="5">5</Option>
+                        <Option value="6">6</Option>
+                        <Option value="7">7</Option>
+                        <Option value="8">8</Option>
+                        <Option value="9">9</Option>
+                    </Select>
                 </Column>
             </Search>
             <Section>
