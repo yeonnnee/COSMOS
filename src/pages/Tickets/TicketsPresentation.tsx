@@ -1,7 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import { Route, Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Route } from "react-router-dom";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker, { DayValue } from "react-modern-calendar-datepicker";
 import {
@@ -11,119 +9,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import SearchTickets from "../SearchTickets";
-
-const Main = styled.main`
-    width: 100%;
-    height: 100vh;
-    padding: 200px;
-    background-image: url(${(props: MainProps) => props.bgImg});
-    background-size: cover;
-    display: grid;
-    grid-template-rows: repeat(4 1fr);
-`;
-
-const Title = styled.div`
-    font-family: "Castoro", serif;
-    font-size: 50px;
-    line-height: 1.3;
-    text-align: center;
-`;
-const Text = styled.div`
-    margin-top: 20px;
-    text-align: center;
-    line-height: 1.3;
-`;
-
-const Section = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-`;
-const Search = styled.div`
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 1fr;
-    gap: 30px;
-    margin-top: 50px;
-    border: 1px solid white;
-    @media only screen and (max-width: 850px) {
-        padding: 20px 40px;
-    }
-`;
-const Column = styled.div`
-    display: flex;
-    flex-direction: column;
-    font-family: "Texturina", serif;
-`;
-const SearchBtn = styled(Link)`
-    width: 150px;
-    height: 50px;
-    margin-top: 20px;
-    border: 1px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    font-family: "Raleway", sans-serif;
-    font-weight: bold;
-    &:hover {
-        background-color: rgba(158, 156, 156, 0.4);
-    }
-`;
-const Select = styled.select`
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: rgba(158, 156, 156, 0.4);
-    font-family: "Raleway", sans-serif;
-    color: #f1c40f;
-    font-size: 15px;
-    font-weight: bold;
-    &:hover {
-        border: 1px solid white;
-    }
-`;
-const Option = styled.option`
-    color: #2980b9;
-    font-weight: bold;
-`;
-const Label = styled.span``;
-const Icon = styled(FontAwesomeIcon)`
-    margin-left: 10px;
-`;
-const Wrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 9px;
-    width: 100%;
-`;
-const Date = styled.div`
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 5px;
-    margin-top: 12px;
-    cursor: default;
-    background-color: rgba(158, 156, 156, 0.4);
-    &:hover {
-        border: 1px solid white;
-    }
-`;
-const Span = styled.span`
-    padding: 0 10px;
-    font-size: 15px;
-    font-weight: bold;
-`;
-
-interface MainProps {
-    bgImg: string;
-}
+import {
+    Main,
+    Section,
+    Title,
+    Text,
+    Search,
+    Column,
+    Label,
+    Select,
+    Option,
+    Icon,
+    Date,
+    Wrapper,
+    Span,
+    SearchBtn,
+} from "./styles";
 
 interface TicketsPresentationProps {
     departureDate: DayValue;
@@ -133,6 +34,7 @@ interface TicketsPresentationProps {
     selectDepartures: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     selectDestination: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
+
 const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
     TicketsProps
 ) => {
