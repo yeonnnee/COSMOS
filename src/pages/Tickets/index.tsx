@@ -8,6 +8,7 @@ const Tickets: () => JSX.Element = () => {
     const [lastDate, setLastDate] = useState<DayValue>(null);
     const [departures, setDepartures] = useState("");
     const [destination, setDestination] = useState("");
+    const [passenger, setPassenger] = useState("");
 
     function selectDepartureDate(val: DayValue) {
         setDepartureDate(val);
@@ -22,6 +23,19 @@ const Tickets: () => JSX.Element = () => {
     function selectDestination(e: React.ChangeEvent<HTMLSelectElement>) {
         setDestination(e.target.value);
     }
+    function selectPassenger(e: React.ChangeEvent<HTMLSelectElement>) {
+        setPassenger(e.target.value);
+    }
+    function searchTickets() {
+        const data = {
+            departures: departures,
+            destination: destination,
+            departureDate: departureDate,
+            lastDate: lastDate,
+            passenger: passenger,
+        };
+        console.log(data);
+    }
     return (
         <TicketsPresentation
             departureDate={departureDate}
@@ -30,6 +44,8 @@ const Tickets: () => JSX.Element = () => {
             selectLastDate={selectLastDate}
             selectDepartures={selectDepartures}
             selectDestination={selectDestination}
+            selectPassenger={selectPassenger}
+            searchTickets={searchTickets}
         />
     );
 };

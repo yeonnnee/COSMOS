@@ -33,6 +33,8 @@ interface TicketsPresentationProps {
     selectLastDate: (val: DayValue) => void;
     selectDepartures: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     selectDestination: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    selectPassenger: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    searchTickets: () => void;
 }
 
 const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
@@ -45,6 +47,8 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
         selectLastDate,
         selectDepartures,
         selectDestination,
+        selectPassenger,
+        searchTickets,
     } = TicketsProps;
 
     return (
@@ -128,7 +132,7 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                     <Label>
                         Passenger <Icon icon={faUserAstronaut} />
                     </Label>
-                    <Select>
+                    <Select onChange={selectPassenger}>
                         <Option value=""></Option>
                         <Option value="1">1</Option>
                         <Option value="2">2</Option>
@@ -143,7 +147,9 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                 </Column>
             </Search>
             <Section>
-                <SearchBtn to="/cosmos/tickets/search">Search</SearchBtn>
+                <SearchBtn to="/cosmos/tickets/search" onClick={searchTickets}>
+                    Search
+                </SearchBtn>
             </Section>
 
             <Section>
