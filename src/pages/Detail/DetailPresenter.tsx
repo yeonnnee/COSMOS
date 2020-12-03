@@ -2,32 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-interface IDiameter {
-    EquatorialDiameter: string;
-    PolarDiameter: string;
-}
-
-interface IPlanet {
-    id: number;
-    name: string;
-    imgUrl: string;
-    Desc: string;
-    detail: string;
-    Mass: string;
-    Diameter: string | IDiameter;
-    OrbitPeriod: string;
-    lengthOfDay: string;
-    RotationPeriod: string;
-    gravity: string;
-    SurfaceTemperature: string;
-}
+import { IPlanet } from "./index";
 
 interface IDatailProps {
-    planet: Array<IPlanet>;
+    planet: undefined | IPlanet;
 }
 
 interface IImageProps {
-    bgImg: string;
+    bgImg: undefined | string;
 }
 
 const Main = styled.main`
@@ -133,45 +115,48 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
     detailProps
 ) => {
     const { planet } = detailProps;
+    const orbitPeriod = planet?.orbitPeriod;
+
     return (
         <Main>
             <Section>
                 <Intro>
-                    <Name>{planet[0].name}</Name>
-                    <Desc>{planet[0].detail}</Desc>
+                    <Name>{planet?.name}</Name>
+                    <Desc>{planet?.detail}</Desc>
                     <BuyBtn to="/cosmos/tickets">Buy Ticket</BuyBtn>
                 </Intro>
-                <Img bgImg={planet[0].imgUrl}></Img>
+                <Img bgImg={planet?.imgUrl}></Img>
             </Section>
             <Info>
                 <Column>
                     <Title>Orbit Period</Title>
                     <Text>
-                        {planet[0].OrbitPeriod.toString().split("(")[0]}
+                        {orbitPeriod
+                            ? orbitPeriod.toString().split("(")[0]
+                            : null}
                     </Text>
 
-                    {planet[0].OrbitPeriod.toString().split("(")[1] ? (
+                    {orbitPeriod && orbitPeriod.toString().split("(")[1] ? (
                         <SmallText>
-                            {"(" +
-                                planet[0].OrbitPeriod.toString().split("(")[1]}
+                            {"(" + orbitPeriod.toString().split("(")[1]}
                         </SmallText>
                     ) : null}
                 </Column>
                 <Column>
                     <Title>Length Of Day</Title>
-                    <Text>{planet[0].lengthOfDay}</Text>
+                    <Text>{planet?.lengthOfDay}</Text>
                 </Column>
                 <Column>
                     <Title>Rotation Period</Title>
-                    <Text>{planet[0].RotationPeriod}</Text>
+                    <Text>{planet?.rotationPeriod}</Text>
                 </Column>
                 <Column>
                     <Title>Surface Temperature</Title>
-                    <Text>{planet[0].SurfaceTemperature}</Text>
+                    <Text>{planet?.surfaceTemperature}</Text>
                 </Column>
                 <Column>
                     <Title>Gravity</Title>
-                    <Text>{planet[0].gravity}</Text>
+                    <Text>{planet?.gravity}</Text>
                 </Column>
             </Info>
         </Main>
