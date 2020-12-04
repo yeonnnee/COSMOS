@@ -32,20 +32,18 @@ const Detail: () => JSX.Element = () => {
             const palnetRef = db.collection("planets").doc(`${target}`);
             const doc = await palnetRef.get();
 
-            if (doc.exists) {
-                const result = doc.data();
+            const result = doc?.data();
+            if (result) {
                 setPlanet({
-                    name: result?.name,
-                    detail: result?.detail,
-                    imgUrl: result?.imgUrl,
-                    orbitPeriod: result?.orbitPeriod,
-                    lengthOfDay: result?.lengthOfDay,
-                    rotationPeriod: result?.rotationPeriod,
-                    surfaceTemperature: result?.surfaceTemperature,
-                    gravity: result?.gravity,
+                    name: result.name,
+                    detail: result.detail,
+                    imgUrl: result.imgUrl,
+                    orbitPeriod: result.orbitPeriod,
+                    lengthOfDay: result.lengthOfDay,
+                    rotationPeriod: result.rotationPeriod,
+                    surfaceTemperature: result.surfaceTemperature,
+                    gravity: result.gravity,
                 });
-            } else {
-                console.log("No such document!");
             }
         } catch (error) {
             console.log(error);
