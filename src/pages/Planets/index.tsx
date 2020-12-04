@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { db } from "../../firebase";
 import PlanetsPresenter from "./PlanetsPresenter";
-import info from "../../data/planets.json";
+
+export interface IPlanets {
+    id: number;
+    name: string;
+    imgUrl: string;
+    desc: string;
+}
 
 const Planets: () => JSX.Element = () => {
     const [state, setState] = useState({
@@ -9,7 +16,10 @@ const Planets: () => JSX.Element = () => {
         max: false,
         min: true,
     });
-    const [data, setData] = useState([{ name: "", imgUrl: "", desc: "" }]);
+
+    const [planets, setPlanets] = useState<Array<IPlanets>>([
+        { id: 0, name: "", imgUrl: "", desc: "" },
+    ]);
 
     function getNextItem() {
         if (state.currentGroup === 1) {
@@ -61,26 +71,40 @@ const Planets: () => JSX.Element = () => {
         }
     }
 
-    function fetchData() {
-        const planetList = [];
-        for (let i = 0; i < info.length; i++) {
-            const planet = {
-                name: info[i].name,
-                imgUrl: info[i].imgUrl,
-                desc: info[i].Desc,
-            };
-            planetList.push(planet);
+    async function fetchData() {
+        try {
+            const res = await db.collection("planets").get();
+            const data: Array<IPlanets> = [];
+            res.forEach((document) =>
+                data.push({
+                    id: document.data().id,
+                    name: document.data().name,
+                    desc: document.data().desc,
+                    imgUrl: document.data().imgUrl,
+                })
+            );
+
+            data.sort(function (a, b) {
+                const one = a.id;
+                const next = b.id;
+
+                return one - next;
+            });
+            setPlanets(data);
+        } catch (error) {
+            console.log(error);
         }
-        setData(planetList);
     }
 
-    useEffect(() => fetchData(), []);
+    useEffect(() => {
+        fetchData();
+    }, []);
     return (
         <PlanetsPresenter
             state={state}
             getNextItem={getNextItem}
             getPrevItem={getPrevItem}
-            data={data}
+            planets={planets}
         />
     );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { IPlanets } from ".";
 import {
     Carousel,
     Item,
@@ -22,20 +23,15 @@ interface Istate {
     min: boolean;
 }
 
-interface IData {
-    name: string;
-    desc: string;
-    imgUrl: string;
-}
 interface IProps {
     state: Istate;
     getNextItem: () => void;
     getPrevItem: () => void;
-    data: Array<IData>;
+    planets: Array<IPlanets>;
 }
 
 const PlanetsPresenter: React.FunctionComponent<IProps> = (PlanetsProps) => {
-    const { state, getNextItem, getPrevItem, data } = PlanetsProps;
+    const { state, getNextItem, getPrevItem, planets } = PlanetsProps;
 
     return (
         <Main>
@@ -43,8 +39,8 @@ const PlanetsPresenter: React.FunctionComponent<IProps> = (PlanetsProps) => {
                 <FontAwesomeIcon icon={faAngleLeft} />
             </Btn>
             <Carousel>
-                <List left={state.left} ItemNum={data.length}>
-                    {data.map((planet, index) => (
+                <List left={state.left} ItemNum={planets.length}>
+                    {planets.map((planet, index) => (
                         <BookLink
                             to={`/cosmos/planets/${planet.name}`}
                             key={index}
