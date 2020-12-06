@@ -6,6 +6,7 @@ const Main = styled.main`
     padding: 150px 20px 20px 20px;
     width: 100%;
     height: 100vh;
+    display: grid;
 `;
 const Section = styled.section`
     display: grid;
@@ -29,12 +30,12 @@ const Column = styled.div`
     &:nth-child(4) {
         border-right: none;
     }
-    @media only screen and (max-width: 1172px) {
+    @media only screen and (max-width: 1210px) {
         &:nth-child(3) {
             border-right: none;
         }
     }
-    @media only screen and (max-width: 893px) {
+    @media only screen and (max-width: 930px) {
         &:nth-child(2) {
             border-right: none;
         }
@@ -42,7 +43,7 @@ const Column = styled.div`
             border-right: 2px solid #cf6a87;
         }
     }
-    @media only screen and (max-width: 612px) {
+    @media only screen and (max-width: 655px) {
         padding-bottom: 20px;
         border-right: none;
         border-bottom: 2px solid #cf6a87;
@@ -85,17 +86,51 @@ const Temperature = styled.div`
 const Data = styled.span`
     margin-top: 20px;
     font-family: "Texturina", serif;
+    opacity: 0.5;
 `;
 const Season = styled.h3`
     margin-top: 20px;
     font-size: 35px;
+    opacity: 0.5;
 `;
 const Text = styled.p`
     font-family: "Karla", sans-serif;
+    line-height: 1.5;
 `;
-const Label = styled.label``;
-const Radio = styled.input``;
-const Toggle = styled.div``;
+const Desc = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    @media only screen and (max-width: 927px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 30px;
+    }
+`;
+const Unit = styled.div`
+    display: flex;
+`;
+const Toggle = styled.div`
+    width: 45px;
+    height: 20px;
+    background-color: rgba(185, 182, 182, 0.4);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+`;
+const Controller = styled.div`
+    width: 17px;
+    height: 16px;
+    margin: 2px;
+    border-radius: 8px;
+    background-color: rgba(231, 228, 228, 0.4);
+`;
+const Label = styled.label`
+    margin: 0 5px;
+`;
+const Radio = styled.input`
+    display: none;
+`;
 
 interface IWeatherProps {
     solData: ISolDataState;
@@ -148,23 +183,27 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                 </Data>
                             </Column>
                         </Info>
-                        <div>
-                            <div>
-                                <Text>
-                                    InSight is taking daily weather measurements
-                                    (temperature, wind, pressure) on the surface
-                                    of Mars at Elysium Planitia, a flat, smooth
-                                    plain near Mars’ equator.
-                                </Text>
-                            </div>
-                            <div>
+                        <Desc>
+                            <Text>
+                                InSight is taking daily weather measurements
+                                (temperature, wind, pressure) on the surface of
+                                Mars at Elysium Planitia, a flat, smooth plain
+                                near Mars’ equator.
+                                <br />
+                                It is possible to check previous 7 days record
+                                from the latest one.
+                            </Text>
+
+                            <Unit>
                                 <Label htmlFor="cel">°C</Label>
-                                <Radio type="radio" id="cel"></Radio>
-                                <Toggle></Toggle>
+                                <Radio type="radio" id="cel" checked></Radio>
+                                <Toggle>
+                                    <Controller></Controller>
+                                </Toggle>
                                 <Label htmlFor="fah">°F</Label>
                                 <Radio type="radio" id="fah"></Radio>
-                            </div>
-                        </div>
+                            </Unit>
+                        </Desc>
                     </Section>
                     <section>
                         <button>
