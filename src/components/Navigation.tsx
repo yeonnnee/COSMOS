@@ -37,7 +37,7 @@ interface INav {
     show: string;
     color: string;
 }
-
+// #535c68
 const Navigation = withRouter((navProps) => {
     const { location } = navProps;
     return (
@@ -73,14 +73,14 @@ const Navigation = withRouter((navProps) => {
                         <NavItem>Planets</NavItem>
                     </NavLink>
                     <NavLink
-                        to="/cosmos/tickets"
+                        to="/cosmos/weather"
                         current={
-                            location.pathname.includes("tickets")
+                            location.pathname.includes("weather")
                                 ? "true"
                                 : "false"
                         }
                     >
-                        <NavItem>Tickets</NavItem>
+                        <NavItem>Weather</NavItem>
                     </NavLink>
                 </NavList>
             </Nav>

@@ -6,7 +6,7 @@ import Gallery from "../pages/Gallery";
 import Navigation from "./Navigation";
 import Planets from "../pages/Planets";
 import Detail from "../pages/Detail";
-import Tickets from "../pages/Tickets";
+import Weather from "../pages/Weather";
 
 const Router: () => JSX.Element = () => {
     return (
@@ -14,9 +14,9 @@ const Router: () => JSX.Element = () => {
             <Navigation />
             <Route path="/" exact component={Cover} />
             <Route path="/cosmos/gallery" exact component={Gallery} />
+            <Route path="/cosmos/weather" exact component={Weather} />
             <Route path="/cosmos/planets" exact component={Planets} />
             <Route path="/cosmos/planets/:id" exact component={Detail} />
-            <Route path="/cosmos/tickets" component={Tickets} />
         </BrowserRouter>
     );
 };
