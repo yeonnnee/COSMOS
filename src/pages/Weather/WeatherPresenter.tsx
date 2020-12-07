@@ -7,6 +7,8 @@ const Main = styled.main`
     width: 100%;
     height: 100vh;
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 100px 100px;
 `;
 const Section = styled.section`
     display: grid;
@@ -55,9 +57,9 @@ const Column = styled.div`
     }
 `;
 
-const SolText = styled.h1`
-    font-size: 50px;
-    font-family: "Karla", sans-serif;
+const SolNum = styled.h1`
+    font-size: ${(props: ISolNum) => props.fontSize};
+    font-family: "Raleway", sans-serif;
     font-weight: bold;
 `;
 const Date = styled.h2`
@@ -108,6 +110,10 @@ const Desc = styled.div`
 `;
 const Unit = styled.div`
     display: flex;
+    align-items: flex-end;
+    @media only screen and (max-width: 927px) {
+        justify-content: flex-end;
+    }
 `;
 const Toggle = styled.div`
     width: 45px;
@@ -131,7 +137,36 @@ const Label = styled.label`
 const Radio = styled.input`
     display: none;
 `;
+const PreviousSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+`;
 
+const Previous = styled.section`
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+`;
+const Item = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+`;
+
+const PrevDate = styled.span`
+    margin-top: 8px;
+    font-family: "Texturina", serif;
+`;
+
+interface ISolNum {
+    fontSize: string;
+}
 interface IWeatherProps {
     solData: ISolDataState;
 }
@@ -151,9 +186,9 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                         <Title>Latest Weather at Elysium Planitia</Title>
                         <Info>
                             <Column>
-                                <SolText>
+                                <SolNum fontSize="50px">
                                     Sol {solData.sol[currentIndex].sol}
-                                </SolText>
+                                </SolNum>
                                 <Date>{solData.sol[currentIndex].date}</Date>
                             </Column>
                             <Column>
@@ -196,7 +231,7 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
 
                             <Unit>
                                 <Label htmlFor="cel">°C</Label>
-                                <Radio type="radio" id="cel" checked></Radio>
+                                <Radio type="radio" id="cel"></Radio>
                                 <Toggle>
                                     <Controller></Controller>
                                 </Toggle>
@@ -205,21 +240,34 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                             </Unit>
                         </Desc>
                     </Section>
-                    <section>
+                    <PreviousSection>
                         <button>
                             <span>&#8593;</span>
                         </button>
                         <h2>PREVIOUS 7 DAYS</h2>
-                    </section>
-                    <section>
-                        <div>
-                            <span>num</span>
-                            <span>date</span>
-                            <span>high</span>
-                            <span>low</span>
-                            <button>MORE INFO</button>
-                        </div>
-                    </section>
+                    </PreviousSection>
+                    <Previous>
+                        {solData.sol.map((sol, index) => {
+                            return (
+                                <Item key={index}>
+                                    <SolNum fontSize="25px">
+                                        Sol {sol.sol}
+                                    </SolNum>
+                                    <PrevDate>{sol.date}</PrevDate>
+                                    <Temperature>
+                                        <Data>
+                                            High:
+                                            {solData.sol[currentIndex].maxTemp}
+                                        </Data>
+                                        <Data>
+                                            Low:
+                                            {solData.sol[currentIndex].minTemp}
+                                        </Data>
+                                    </Temperature>
+                                </Item>
+                            );
+                        })}
+                    </Previous>
                 </>
             )}
         </Main>
