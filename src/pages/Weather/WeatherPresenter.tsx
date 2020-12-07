@@ -99,6 +99,34 @@ const Text = styled.p`
     font-family: "Karla", sans-serif;
     line-height: 1.5;
 `;
+const Wind = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+`;
+const WindInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+const Compass = styled.div`
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-color: rgba(207, 202, 202, 0.4);
+    display: grid;
+    place-items: center;
+`;
+const Degrees = styled.div`
+    width: 18px;
+    height: 45px;
+    background-color: #53323b;
+    clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+    transform: translateY(-50%) rotate(45deg);
+    transform-origin: bottom center;
+    transition: transform 1s ease;
+`;
+
 const Desc = styled.div`
     display: grid;
     grid-template-columns: 1fr 100px;
@@ -138,10 +166,8 @@ const Radio = styled.input`
     display: none;
 `;
 const PreviousSection = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     width: 100%;
     background-color: white;
 `;
@@ -151,17 +177,31 @@ const Previous = styled.section`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    place-items: center;
+    text-align: center;
 `;
 const Item = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 20px;
 `;
 
 const PrevDate = styled.span`
     margin-top: 8px;
     font-family: "Texturina", serif;
+`;
+
+const PrevText = styled.span`
+    color: #cf6a87;
+    font-size: 25px;
+    font-family: "Karla", sans-serif;
+`;
+
+const Arrow = styled.span`
+    font-size: 20px;
+    font-weight: bold;
+`;
+
+const Button = styled.button`
+    padding: 10px 20px;
 `;
 
 interface ISolNum {
@@ -209,13 +249,21 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                 </Temperature>
                             </Column>
                             <Column>
-                                <BoxTitle>Wind</BoxTitle>
-                                <div>
-                                    <div></div>
-                                </div>
-                                <Data>
-                                    {solData.sol[currentIndex].windSpeed} m/s
-                                </Data>
+                                <Wind>
+                                    <Compass>
+                                        <Degrees></Degrees>
+                                    </Compass>
+                                    <WindInfo>
+                                        <BoxTitle>Wind</BoxTitle>
+                                        <Data>
+                                            {
+                                                solData.sol[currentIndex]
+                                                    .windSpeed
+                                            }
+                                            m/s
+                                        </Data>
+                                    </WindInfo>
+                                </Wind>
                             </Column>
                         </Info>
                         <Desc>
@@ -241,10 +289,10 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                         </Desc>
                     </Section>
                     <PreviousSection>
-                        <button>
-                            <span>&#8593;</span>
-                        </button>
-                        <h2>PREVIOUS 7 DAYS</h2>
+                        <Button>
+                            <Arrow>&#8593;</Arrow>
+                        </Button>
+                        <PrevText>PREVIOUS 7 DAYS</PrevText>
                     </PreviousSection>
                     <Previous>
                         {solData.sol.map((sol, index) => {
