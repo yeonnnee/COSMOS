@@ -129,7 +129,7 @@ const Degrees = styled.div`
 
 const Desc = styled.div`
     display: grid;
-    grid-template-columns: 1fr 100px;
+    grid-template-columns: 1fr 200px;
     @media only screen and (max-width: 927px) {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, 1fr);
@@ -139,31 +139,54 @@ const Desc = styled.div`
 const Unit = styled.div`
     display: flex;
     align-items: flex-end;
+    opacity: 0.5;
+    transition: opacity 0.5s linear;
+    cursor: pointer;
+    &:hover {
+        opacity: 1;
+    }
     @media only screen and (max-width: 927px) {
         justify-content: flex-end;
     }
 `;
 const Toggle = styled.div`
-    width: 45px;
-    height: 20px;
-    background-color: rgba(185, 182, 182, 0.4);
-    border-radius: 10px;
+    width: 50px;
+    height: 25px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 30px;
     display: flex;
     align-items: center;
-    cursor: pointer;
+
+    &::after {
+        content: "";
+        background-color: rgba(207, 202, 202, 0.4);
+        border-radius: 50%;
+        height: 15px;
+        width: 16px;
+        margin: 2px;
+    }
 `;
-const Controller = styled.div`
-    width: 17px;
-    height: 16px;
-    margin: 2px;
-    border-radius: 8px;
-    background-color: rgba(231, 228, 228, 0.4);
-`;
+
 const Label = styled.label`
-    margin: 0 5px;
+    margin: 2px 5px;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 0.7;
+    font-family: "Karla", sans-serif;
+    cursor: pointer;
 `;
 const Radio = styled.input`
     display: none;
+    &:checked ~ ${Toggle}::after {
+        transform: translateX(25px);
+        transition: transform 1s ease;
+    }
+    &:checked ~ ${Toggle} {
+        background-color: #852742;
+        opacity: 0.7;
+        transition: background-color 2s ease;
+    }
 `;
 const PreviousSection = styled.section`
     display: grid;
@@ -207,6 +230,7 @@ const Button = styled.button`
 interface ISolNum {
     fontSize: string;
 }
+
 interface IWeatherProps {
     solData: ISolDataState;
 }
@@ -279,12 +303,18 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
 
                             <Unit>
                                 <Label htmlFor="cel">°C</Label>
-                                <Radio type="radio" id="cel"></Radio>
-                                <Toggle>
-                                    <Controller></Controller>
-                                </Toggle>
+                                <Radio
+                                    type="radio"
+                                    id="cel"
+                                    name="unit"
+                                ></Radio>
+                                <Toggle> </Toggle>
                                 <Label htmlFor="fah">°F</Label>
-                                <Radio type="radio" id="fah"></Radio>
+                                <Radio
+                                    type="radio"
+                                    id="fah"
+                                    name="unit"
+                                ></Radio>
                             </Unit>
                         </Desc>
                     </Section>
