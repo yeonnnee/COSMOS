@@ -1,14 +1,17 @@
 import React from "react";
 import { ISolDataState } from ".";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 const Main = styled.main`
     padding: 150px 20px 20px 20px;
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.7fr 100px 100px;
+    grid-template-columns: repeat(auto-fit, minmax(0.7fr, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 50px;
 `;
 const Section = styled.section`
     display: grid;
@@ -189,19 +192,26 @@ const Radio = styled.input`
     }
 `;
 const PreviousSection = styled.section`
-    display: grid;
-    place-items: center;
     width: 100%;
     background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    @media only screen and (max-width: 1679px) {
+        position: relative;
+    }
 `;
 
 const Previous = styled.section`
     padding: 20px;
-    display: grid;
+    margin-top: 20px;
+    display: ${(props: IPreviousStatus) => props.status};
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     place-items: center;
     text-align: center;
+    color: black;
 `;
 const Item = styled.div`
     padding: 20px;
@@ -216,19 +226,27 @@ const PrevText = styled.span`
     color: #cf6a87;
     font-size: 25px;
     font-family: "Karla", sans-serif;
-`;
-
-const Arrow = styled.span`
-    font-size: 20px;
-    font-weight: bold;
+    margin: 15px auto;
 `;
 
 const Button = styled.button`
-    padding: 10px 20px;
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    position: absolute;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+    left: 50%;
+    transform: translate(-50%, -165%);
+    cursor: pointer;
+    color: #a7a4a4;
 `;
 
 interface ISolNum {
     fontSize: string;
+}
+
+interface IPreviousStatus {
+    status: string;
 }
 
 interface IWeatherProps {
@@ -320,32 +338,38 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                     </Section>
                     <PreviousSection>
                         <Button>
-                            <Arrow>&#8593;</Arrow>
+                            <FontAwesomeIcon icon={faChevronUp} />
                         </Button>
                         <PrevText>PREVIOUS 7 DAYS</PrevText>
+                        <Previous status="grid">
+                            {solData.sol.map((sol, index) => {
+                                return (
+                                    <Item key={index}>
+                                        <SolNum fontSize="25px">
+                                            Sol {sol.sol}
+                                        </SolNum>
+                                        <PrevDate>{sol.date}</PrevDate>
+                                        <Temperature>
+                                            <Data>
+                                                High:
+                                                {
+                                                    solData.sol[currentIndex]
+                                                        .maxTemp
+                                                }
+                                            </Data>
+                                            <Data>
+                                                Low:
+                                                {
+                                                    solData.sol[currentIndex]
+                                                        .minTemp
+                                                }
+                                            </Data>
+                                        </Temperature>
+                                    </Item>
+                                );
+                            })}
+                        </Previous>
                     </PreviousSection>
-                    <Previous>
-                        {solData.sol.map((sol, index) => {
-                            return (
-                                <Item key={index}>
-                                    <SolNum fontSize="25px">
-                                        Sol {sol.sol}
-                                    </SolNum>
-                                    <PrevDate>{sol.date}</PrevDate>
-                                    <Temperature>
-                                        <Data>
-                                            High:
-                                            {solData.sol[currentIndex].maxTemp}
-                                        </Data>
-                                        <Data>
-                                            Low:
-                                            {solData.sol[currentIndex].minTemp}
-                                        </Data>
-                                    </Temperature>
-                                </Item>
-                            );
-                        })}
-                    </Previous>
                 </>
             )}
         </Main>
