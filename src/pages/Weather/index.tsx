@@ -31,9 +31,10 @@ const Weather: () => JSX.Element = () => {
             const result = [];
             for (let i = 0; i < sol_keys.length; i++) {
                 const sol = res.data[sol_keys[i]];
-                const date = new Date(sol.First_UTC)
-                    .toString()
-                    .substring(4, 10);
+                const date = new Date(sol.First_UTC).toLocaleDateString("en", {
+                    day: "numeric",
+                    month: "long",
+                });
 
                 const solData = {
                     sol: sol_keys[i],
