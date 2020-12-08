@@ -11,7 +11,7 @@ const Main = styled.main`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0.7fr, 1fr));
     grid-template-rows: repeat(2, 1fr);
-    gap: 50px;
+    gap: 20px;
 `;
 const Section = styled.section`
     display: grid;
@@ -125,9 +125,9 @@ const Degrees = styled.div`
     height: 45px;
     background-color: #53323b;
     clip-path: polygon(50% 0, 0% 100%, 100% 100%);
-    transform: translateY(-50%) rotate(45deg);
+    transform: translateY(-50%) rotate(${(props: IDegree) => props.degrees}deg);
     transform-origin: bottom center;
-    transition: transform 1s ease;
+    transition: transform 2s ease;
 `;
 
 const Desc = styled.div`
@@ -198,6 +198,8 @@ const PreviousSection = styled.section`
     bottom: 0;
     left: 0;
     padding: 20px;
+    transform: translateY(65%);
+
     @media only screen and (max-width: 1679px) {
         position: relative;
     }
@@ -248,7 +250,9 @@ interface ISolNum {
 interface IPreviousStatus {
     status: string;
 }
-
+interface IDegree {
+    degrees: undefined | string;
+}
 interface IWeatherProps {
     solData: ISolDataState;
 }
@@ -282,28 +286,47 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                             <Column>
                                 <BoxTitle>Temperature</BoxTitle>
                                 <Temperature>
-                                    <Data>
-                                        High:{solData.sol[currentIndex].maxTemp}
-                                    </Data>
-                                    <Data>
-                                        Low:{solData.sol[currentIndex].minTemp}
-                                    </Data>
+                                    {solData.sol[currentIndex].maxTemp ? (
+                                        <>
+                                            <Data>
+                                                High:
+                                                {
+                                                    solData.sol[currentIndex]
+                                                        .maxTemp
+                                                }
+                                            </Data>
+                                            <Data>
+                                                Low:
+                                                {
+                                                    solData.sol[currentIndex]
+                                                        .minTemp
+                                                }
+                                            </Data>
+                                        </>
+                                    ) : (
+                                        <Data>No data</Data>
+                                    )}
                                 </Temperature>
                             </Column>
                             <Column>
                                 <Wind>
                                     <Compass>
-                                        <Degrees></Degrees>
+                                        <Degrees degrees="157"></Degrees>
                                     </Compass>
                                     <WindInfo>
                                         <BoxTitle>Wind</BoxTitle>
-                                        <Data>
-                                            {
-                                                solData.sol[currentIndex]
-                                                    .windSpeed
-                                            }
-                                            m/s
-                                        </Data>
+
+                                        {solData.sol[currentIndex].windSpeed ? (
+                                            <Data>
+                                                {
+                                                    solData.sol[currentIndex]
+                                                        .windSpeed
+                                                }
+                                                m/s
+                                            </Data>
+                                        ) : (
+                                            <Data>No data</Data>
+                                        )}
                                     </WindInfo>
                                 </Wind>
                             </Column>
@@ -350,20 +373,29 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                         </SolNum>
                                         <PrevDate>{sol.date}</PrevDate>
                                         <Temperature>
-                                            <Data>
-                                                High:
-                                                {
-                                                    solData.sol[currentIndex]
-                                                        .maxTemp
-                                                }
-                                            </Data>
-                                            <Data>
-                                                Low:
-                                                {
-                                                    solData.sol[currentIndex]
-                                                        .minTemp
-                                                }
-                                            </Data>
+                                            {solData.sol[currentIndex]
+                                                .maxTemp ? (
+                                                <>
+                                                    <Data>
+                                                        High:
+                                                        {
+                                                            solData.sol[
+                                                                currentIndex
+                                                            ].maxTemp
+                                                        }
+                                                    </Data>
+                                                    <Data>
+                                                        Low:
+                                                        {
+                                                            solData.sol[
+                                                                currentIndex
+                                                            ].minTemp
+                                                        }
+                                                    </Data>
+                                                </>
+                                            ) : (
+                                                <Data>No data</Data>
+                                            )}
                                         </Temperature>
                                     </Item>
                                 );
