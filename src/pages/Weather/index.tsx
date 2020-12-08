@@ -5,12 +5,12 @@ import WeatherPresenter from "./WeatherPresenter";
 
 interface ISolData {
     sol: string;
-    maxTemp: undefined | string;
-    minTemp: undefined | string;
+    maxTemp: undefined | number;
+    minTemp: undefined | number;
     season: string;
-    windSpeed: undefined | string;
-    windDirectionDegrees: undefined | string;
-    windDirectionCardinal: undefined | string;
+    windSpeed: undefined | number;
+    windDirectionDegrees: undefined | number;
+    windDirectionCardinal: undefined | number;
     date: string;
 }
 export interface ISolDataState {
