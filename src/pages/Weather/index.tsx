@@ -38,10 +38,10 @@ const Weather: () => JSX.Element = () => {
 
                 const solData = {
                     sol: sol_keys[i],
-                    maxTemp: sol.AT?.mx,
-                    minTemp: sol.AT?.mn,
+                    maxTemp: Math.round(sol.AT?.mx),
+                    minTemp: Math.round(sol.AT?.mn),
                     season: sol.Season,
-                    windSpeed: sol.HWS?.av,
+                    windSpeed: Math.round(sol.HWS?.av),
                     windDirectionDegrees: sol.WD?.most_common?.compass_degrees,
                     windDirectionCardinal: sol.WD?.most_common?.compass_point,
                     date: date,
