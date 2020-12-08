@@ -215,12 +215,14 @@ const Previous = styled.section`
     color: black;
 `;
 const Item = styled.div`
+    width: 100%;
+    height: 100%;
     padding: 20px;
 `;
 
-const PrevDate = styled.span`
-    margin-top: 8px;
+const PrevDate = styled.div`
     font-family: "Texturina", serif;
+    margin-top: 5px;
 `;
 
 const PrevText = styled.span`
@@ -244,6 +246,19 @@ const Button = styled.button`
 
 const More = styled.button`
     outline: none;
+    border: none;
+    box-shadow: 1px 1px 3px black;
+    /* background-color: #503c42; */
+    color: black;
+    padding: 2px 10px;
+    transform: translateY(20px);
+    border-radius: 3px;
+    font-family: "Karla", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 2px 2px 3px black;
+    }
 `;
 
 interface ISolNum {
@@ -258,12 +273,13 @@ interface IDegree {
 }
 interface IWeatherProps {
     solData: ISolDataState;
+    selectItem: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
     weatherProps
 ) => {
-    const { solData } = weatherProps;
+    const { solData, selectItem } = weatherProps;
     return (
         <Main>
             {solData.loading ? (
@@ -379,6 +395,9 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                                 <Data>No data</Data>
                                             )}
                                         </Temperature>
+                                        <More id={sol.sol} onClick={selectItem}>
+                                            MORE
+                                        </More>
                                     </Item>
                                 );
                             })}
