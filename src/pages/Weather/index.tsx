@@ -26,6 +26,17 @@ const Weather: () => JSX.Element = () => {
         previous: [],
     });
 
+    function selecteItem(e: React.MouseEvent<HTMLButtonElement>) {
+        const target = e.currentTarget.id;
+        const selected = solData.previous.filter(
+            (sol) => sol.sol == `${target}`
+        );
+        setSolData({
+            loading: false,
+            selected: selected[0],
+            previous: solData.previous,
+        });
+    }
     async function fetchData() {
         try {
             const res = await nasaApi.insight();
@@ -65,7 +76,7 @@ const Weather: () => JSX.Element = () => {
     useEffect(() => {
         fetchData();
     }, []);
-    return <WeatherPresenter solData={solData} />;
+    return <WeatherPresenter solData={solData} selectItem={selecteItem} />;
 };
 
 export default Weather;
