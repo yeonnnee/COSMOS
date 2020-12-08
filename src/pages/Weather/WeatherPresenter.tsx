@@ -156,7 +156,7 @@ const Toggle = styled.div`
     width: 50px;
     height: 25px;
     background-color: ${(props) =>
-        props.status === "°C" ? "#b65f78" : "rgba(207, 202, 202, 0.4)"};
+        props.status === "C" ? "#b65f78" : "rgba(207, 202, 202, 0.4)"};
     transition: background-color 2s ease;
     border: 2px solid white;
     border-radius: 30px;
@@ -171,7 +171,7 @@ const Toggle = styled.div`
         width: 16px;
         margin: 2px;
         transform: translateX(
-            ${(props: IToggle) => (props.status === "°C" ? 25 : 0)}px
+            ${(props: IToggle) => (props.status === "C" ? 25 : 0)}px
         );
         transition: transform 1s ease;
     }
@@ -306,14 +306,14 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                         <>
                                             <Data>
                                                 High:
-                                                {solData.selected.maxTemp}
+                                                {solData.selected.maxTemp}°
                                                 <TempUnit>
                                                     {currentUnit.checked}
                                                 </TempUnit>
                                             </Data>
                                             <Data>
                                                 Low:
-                                                {solData.selected.minTemp}
+                                                {solData.selected.minTemp}°
                                                 <TempUnit>
                                                     {currentUnit.checked}
                                                 </TempUnit>
