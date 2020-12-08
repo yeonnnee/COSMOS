@@ -30,15 +30,15 @@ const Weather: () => JSX.Element = () => {
         previous: [],
     });
     const [currentUnit, setCurrentUnit] = useState({
-        checked: "cel",
+        checked: "°C",
     });
 
     function convertUnit() {
-        if (currentUnit.checked === "cel") {
-            setCurrentUnit({ checked: "fah" });
+        if (currentUnit.checked === "°C") {
+            setCurrentUnit({ checked: "°F" });
         }
-        if (currentUnit.checked === "fah") {
-            setCurrentUnit({ checked: "cel" });
+        if (currentUnit.checked === "°F") {
+            setCurrentUnit({ checked: "°C" });
         }
     }
     function selecteItem(e: React.MouseEvent<HTMLButtonElement>) {
