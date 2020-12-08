@@ -1,5 +1,5 @@
 import React from "react";
-import { ISolDataState } from ".";
+import { ICurrentUnit, ISolDataState } from ".";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +14,7 @@ const Main = styled.main`
 `;
 const Section = styled.section`
     display: grid;
-    moreound-color: rgba(158, 156, 156, 0.4);
+    background-color: rgba(158, 156, 156, 0.4);
     padding: 20px;
 `;
 const Info = styled.div`
@@ -154,7 +154,9 @@ const Unit = styled.div`
 const Toggle = styled.div`
     width: 50px;
     height: 25px;
-    background-color: transparent;
+    background-color: ${(props) =>
+        props.status === "cel" ? "#b65f78" : "rgba(207, 202, 202, 0.4)"};
+    transition: background-color 2s ease;
     border: 2px solid white;
     border-radius: 30px;
     display: flex;
@@ -167,10 +169,14 @@ const Toggle = styled.div`
         height: 15px;
         width: 16px;
         margin: 2px;
+        transform: translateX(
+            ${(props: IToggle) => (props.status === "cel" ? 25 : 0)}px
+        );
+        transition: transform 1s ease;
     }
 `;
 
-const Label = styled.label`
+const Label = styled.span`
     margin: 2px 5px;
     font-weight: bold;
     font-size: 20px;
@@ -178,18 +184,7 @@ const Label = styled.label`
     font-family: "Karla", sans-serif;
     cursor: pointer;
 `;
-const Radio = styled.input`
-    display: none;
-    &:checked ~ ${Toggle}::after {
-        transform: translateX(25px);
-        transition: transform 1s ease;
-    }
-    &:checked ~ ${Toggle} {
-        background-color: #852742;
-        opacity: 0.7;
-        transition: background-color 2s ease;
-    }
-`;
+
 const PreviousSection = styled.section`
     width: 100%;
     background-color: white;
@@ -264,7 +259,9 @@ const More = styled.button`
 interface ISolNum {
     fontSize: string;
 }
-
+interface IToggle {
+    status: string;
+}
 interface IPreviousStatus {
     status: string;
 }
@@ -273,13 +270,15 @@ interface IDegree {
 }
 interface IWeatherProps {
     solData: ISolDataState;
+    currentUnit: ICurrentUnit;
     selectItem: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    convertUnit: () => void;
 }
 
 const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
     weatherProps
 ) => {
-    const { solData, selectItem } = weatherProps;
+    const { solData, selectItem, currentUnit, convertUnit } = weatherProps;
     return (
         <Main>
             {solData.loading ? (
@@ -350,19 +349,12 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                             </Text>
 
                             <Unit>
-                                <Label htmlFor="cel">°C</Label>
-                                <Radio
-                                    type="radio"
-                                    id="cel"
-                                    name="unit"
-                                ></Radio>
-                                <Toggle> </Toggle>
-                                <Label htmlFor="fah">°F</Label>
-                                <Radio
-                                    type="radio"
-                                    id="fah"
-                                    name="unit"
-                                ></Radio>
+                                <Label onClick={convertUnit}>°C</Label>
+                                <Toggle
+                                    onClick={convertUnit}
+                                    status={currentUnit.checked}
+                                ></Toggle>
+                                <Label onClick={convertUnit}>°F</Label>
                             </Unit>
                         </Desc>
                     </Section>

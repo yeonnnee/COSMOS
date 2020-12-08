@@ -19,13 +19,28 @@ export interface ISolDataState {
     previous: Array<ISolData>;
 }
 
+export interface ICurrentUnit {
+    checked: string;
+}
+
 const Weather: () => JSX.Element = () => {
     const [solData, setSolData] = useState<ISolDataState>({
         loading: true,
         selected: null,
         previous: [],
     });
+    const [currentUnit, setCurrentUnit] = useState({
+        checked: "cel",
+    });
 
+    function convertUnit() {
+        if (currentUnit.checked === "cel") {
+            setCurrentUnit({ checked: "fah" });
+        }
+        if (currentUnit.checked === "fah") {
+            setCurrentUnit({ checked: "cel" });
+        }
+    }
     function selecteItem(e: React.MouseEvent<HTMLButtonElement>) {
         const target = e.currentTarget.id;
         const selected = solData.previous.filter(
@@ -71,12 +86,18 @@ const Weather: () => JSX.Element = () => {
             console.log(error);
         }
     }
-    console.log(solData);
 
     useEffect(() => {
         fetchData();
     }, []);
-    return <WeatherPresenter solData={solData} selectItem={selecteItem} />;
+    return (
+        <WeatherPresenter
+            solData={solData}
+            selectItem={selecteItem}
+            convertUnit={convertUnit}
+            currentUnit={currentUnit}
+        />
+    );
 };
 
 export default Weather;
