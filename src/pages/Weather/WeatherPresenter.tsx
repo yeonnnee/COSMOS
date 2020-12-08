@@ -87,16 +87,28 @@ const Temperature = styled.div`
     display: flex;
     flex-direction: column;
 `;
+
+const Number = styled.div`
+    margin: 0 5px;
+    font-family: "Electrolize", sans-serif;
+`;
+const TempText = styled.div``;
 const TempUnit = styled.span``;
-const Data = styled.span`
+const Data = styled.div`
     margin-top: 20px;
-    font-family: "Texturina", serif;
+    font-family: "Karla", sans-serif;
+    font-size: 18px;
     opacity: 0.5;
+    display: flex;
+    justify-content: center;
 `;
 const Season = styled.h3`
     margin-top: 20px;
     font-size: 35px;
     opacity: 0.5;
+    &::first-letter {
+        text-transform: uppercase;
+    }
 `;
 const Text = styled.p`
     font-family: "Karla", sans-serif;
@@ -139,6 +151,7 @@ const Desc = styled.div`
         gap: 30px;
     }
 `;
+
 const Unit = styled.div`
     display: flex;
     align-items: flex-end;
@@ -305,15 +318,20 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                     {solData.selected?.maxTemp ? (
                                         <>
                                             <Data>
-                                                High:
-                                                {solData.selected.maxTemp}°
+                                                <TempText> High :</TempText>
+
+                                                <Number>
+                                                    {solData.selected?.maxTemp}°
+                                                </Number>
                                                 <TempUnit>
                                                     {currentUnit.checked}
                                                 </TempUnit>
                                             </Data>
                                             <Data>
-                                                Low:
-                                                {solData.selected.minTemp}°
+                                                <TempText> Low :</TempText>
+                                                <Number>
+                                                    {solData.selected?.minTemp}°
+                                                </Number>
                                                 <TempUnit>
                                                     {currentUnit.checked}
                                                 </TempUnit>
@@ -384,10 +402,12 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                                     <Data>
                                                         High:
                                                         {sol.maxTemp}
+                                                        °C
                                                     </Data>
                                                     <Data>
                                                         Low:
                                                         {sol.minTemp}
+                                                        °C
                                                     </Data>
                                                 </>
                                             ) : (

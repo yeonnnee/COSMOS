@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { nasaApi } from "../../api";
 
 import WeatherPresenter from "./WeatherPresenter";
@@ -34,11 +35,53 @@ const Weather: () => JSX.Element = () => {
     });
 
     function convertUnit() {
+        const selectedMaxTemp = solData.selected?.maxTemp;
+        const selectedMinTemp = solData.selected?.minTemp;
+
+        //* celsius to Fah *//
+        const fahMaxTemp = selectedMaxTemp
+            ? selectedMaxTemp * 1.8 + 32
+            : undefined;
+        const fahMinTemp = selectedMinTemp
+            ? selectedMinTemp * 1.8 + 32
+            : undefined;
+
+        //* fahrenheit to celsius *//
+        const celMaxTemp = selectedMaxTemp
+            ? (selectedMaxTemp - 32) / 1.8
+            : undefined;
+        const celMinTemp = selectedMinTemp
+            ? (selectedMinTemp - 32) / 1.8
+            : undefined;
+
+        //* convert *//
         if (currentUnit.checked === "C") {
             setCurrentUnit({ checked: "F" });
+            setSolData({
+                loading: false,
+                selected: solData.selected
+                    ? {
+                          ...solData.selected,
+                          maxTemp: fahMaxTemp,
+                          minTemp: fahMinTemp,
+                      }
+                    : null,
+                previous: solData.previous,
+            });
         }
         if (currentUnit.checked === "F") {
             setCurrentUnit({ checked: "C" });
+            setSolData({
+                loading: false,
+                selected: solData.selected
+                    ? {
+                          ...solData.selected,
+                          maxTemp: celMaxTemp,
+                          minTemp: celMinTemp,
+                      }
+                    : null,
+                previous: solData.previous,
+            });
         }
     }
     function selecteItem(e: React.MouseEvent<HTMLButtonElement>) {
