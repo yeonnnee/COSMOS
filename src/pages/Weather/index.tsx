@@ -15,14 +15,17 @@ interface ISolData {
 }
 export interface ISolDataState {
     loading: boolean;
-    sol: Array<ISolData>;
+    selected: null | ISolData;
+    previous: Array<ISolData>;
 }
 
 const Weather: () => JSX.Element = () => {
     const [solData, setSolData] = useState<ISolDataState>({
         loading: true,
-        sol: [],
+        selected: null,
+        previous: [],
     });
+
     async function fetchData() {
         try {
             const res = await nasaApi.insight();
@@ -48,7 +51,11 @@ const Weather: () => JSX.Element = () => {
                 };
                 result.push(solData);
             }
-            setSolData({ loading: false, sol: result });
+            setSolData({
+                loading: false,
+                selected: result[result.length - 1],
+                previous: result,
+            });
         } catch (error) {
             console.log(error);
         }

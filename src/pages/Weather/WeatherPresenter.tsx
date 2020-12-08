@@ -7,7 +7,6 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 const Main = styled.main`
     padding: 150px 20px 20px 20px;
     width: 100%;
-    height: 100vh;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0.7fr, 1fr));
     grid-template-rows: repeat(2, 1fr);
@@ -15,7 +14,7 @@ const Main = styled.main`
 `;
 const Section = styled.section`
     display: grid;
-    background-color: rgba(158, 156, 156, 0.4);
+    moreound-color: rgba(158, 156, 156, 0.4);
     padding: 20px;
 `;
 const Info = styled.div`
@@ -243,6 +242,10 @@ const Button = styled.button`
     color: #a7a4a4;
 `;
 
+const More = styled.button`
+    outline: none;
+`;
+
 interface ISolNum {
     fontSize: string;
 }
@@ -261,7 +264,6 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
     weatherProps
 ) => {
     const { solData } = weatherProps;
-    const currentIndex = solData.sol.length - 1;
     return (
         <Main>
             {solData.loading ? (
@@ -273,34 +275,26 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                         <Info>
                             <Column>
                                 <SolNum fontSize="50px">
-                                    Sol {solData.sol[currentIndex].sol}
+                                    Sol {solData.selected?.sol}
                                 </SolNum>
-                                <Date>{solData.sol[currentIndex].date}</Date>
+                                <Date>{solData.selected?.date}</Date>
                             </Column>
                             <Column>
                                 <BoxTitle>Season</BoxTitle>
-                                <Season>
-                                    {solData.sol[currentIndex].season}
-                                </Season>
+                                <Season>{solData.selected?.season}</Season>
                             </Column>
                             <Column>
                                 <BoxTitle>Temperature</BoxTitle>
                                 <Temperature>
-                                    {solData.sol[currentIndex].maxTemp ? (
+                                    {solData.selected?.maxTemp ? (
                                         <>
                                             <Data>
                                                 High:
-                                                {
-                                                    solData.sol[currentIndex]
-                                                        .maxTemp
-                                                }
+                                                {solData.selected.maxTemp}
                                             </Data>
                                             <Data>
                                                 Low:
-                                                {
-                                                    solData.sol[currentIndex]
-                                                        .minTemp
-                                                }
+                                                {solData.selected.minTemp}
                                             </Data>
                                         </>
                                     ) : (
@@ -316,12 +310,9 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                     <WindInfo>
                                         <BoxTitle>Wind</BoxTitle>
 
-                                        {solData.sol[currentIndex].windSpeed ? (
+                                        {solData.selected?.windSpeed ? (
                                             <Data>
-                                                {
-                                                    solData.sol[currentIndex]
-                                                        .windSpeed
-                                                }
+                                                {solData.selected.windSpeed}
                                                 m/s
                                             </Data>
                                         ) : (
@@ -365,7 +356,7 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                         </Button>
                         <PrevText>PREVIOUS 7 DAYS</PrevText>
                         <Previous status="grid">
-                            {solData.sol.map((sol, index) => {
+                            {solData.previous.map((sol, index) => {
                                 return (
                                     <Item key={index}>
                                         <SolNum fontSize="25px">
@@ -373,24 +364,15 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                         </SolNum>
                                         <PrevDate>{sol.date}</PrevDate>
                                         <Temperature>
-                                            {solData.sol[currentIndex]
-                                                .maxTemp ? (
+                                            {sol.maxTemp ? (
                                                 <>
                                                     <Data>
                                                         High:
-                                                        {
-                                                            solData.sol[
-                                                                currentIndex
-                                                            ].maxTemp
-                                                        }
+                                                        {sol.maxTemp}
                                                     </Data>
                                                     <Data>
                                                         Low:
-                                                        {
-                                                            solData.sol[
-                                                                currentIndex
-                                                            ].minTemp
-                                                        }
+                                                        {sol.minTemp}
                                                     </Data>
                                                 </>
                                             ) : (
