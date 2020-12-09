@@ -3,49 +3,86 @@ import { DayValue } from "react-modern-calendar-datepicker";
 
 import TicketsPresentation from "./TicketsPresentation";
 
+export interface IOptions {
+    departureDate: DayValue;
+    lastDate: DayValue;
+    departures: string;
+    destination: string;
+    passenger: string;
+    loading: boolean;
+    error: string;
+}
+
 const Tickets: () => JSX.Element = () => {
-    const [departureDate, setDepartureDate] = useState<DayValue>(null);
-    const [lastDate, setLastDate] = useState<DayValue>(null);
-    const [departures, setDepartures] = useState("");
-    const [destination, setDestination] = useState("");
-    const [passenger, setPassenger] = useState("");
+    const [options, setOptions] = useState<IOptions>({
+        departureDate: null,
+        lastDate: null,
+        departures: "",
+        destination: "",
+        passenger: "",
+        loading: false,
+        error: "",
+    });
 
     function selectDepartureDate(val: DayValue) {
-        setDepartureDate(val);
+        setOptions({
+            ...options,
+            departureDate: val,
+        });
     }
     function selectLastDate(val: DayValue) {
-        setLastDate(val);
+        setOptions({
+            ...options,
+            lastDate: val,
+        });
     }
-
     function selectDepartures(e: React.ChangeEvent<HTMLSelectElement>) {
-        setDepartures(e.target.value);
+        setOptions({
+            ...options,
+            departures: e.target.value,
+        });
     }
     function selectDestination(e: React.ChangeEvent<HTMLSelectElement>) {
-        setDestination(e.target.value);
+        setOptions({
+            ...options,
+            destination: e.target.value,
+        });
     }
     function selectPassenger(e: React.ChangeEvent<HTMLSelectElement>) {
-        setPassenger(e.target.value);
+        setOptions({
+            ...options,
+            passenger: e.target.value,
+        });
     }
-    function searchTickets() {
-        const data = {
-            departures: departures,
-            destination: destination,
-            departureDate: departureDate,
-            lastDate: lastDate,
-            passenger: passenger,
-        };
-        console.log(data);
+    function search() {
+        if (
+            options.departures === "" ||
+            options.destination === "" ||
+            options.passenger === ""
+        ) {
+            setOptions({
+                ...options,
+                error: "Please fill out the blank",
+            });
+        }
+        if (options.departureDate === null || options.lastDate === null) {
+            setOptions({
+                ...options,
+                error: "Please select the date",
+            });
+        }
+        console.log(options);
     }
+
     return (
         <TicketsPresentation
-            departureDate={departureDate}
-            lastDate={lastDate}
+            options={options}
             selectDepartureDate={selectDepartureDate}
             selectLastDate={selectLastDate}
             selectDepartures={selectDepartures}
             selectDestination={selectDestination}
             selectPassenger={selectPassenger}
-            searchTickets={searchTickets}
+            search={search}
         />
     );
 };

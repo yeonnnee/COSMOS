@@ -8,6 +8,7 @@ import {
     faUserAstronaut,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { IOptions } from "./index";
 import SearchTickets from "../SearchTickets";
 import {
     Main,
@@ -27,30 +28,28 @@ import {
 } from "./styles";
 
 interface TicketsPresentationProps {
-    departureDate: DayValue;
-    lastDate: DayValue;
+    options: IOptions;
     selectDepartureDate: (val: DayValue) => void;
     selectLastDate: (val: DayValue) => void;
     selectDepartures: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     selectDestination: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     selectPassenger: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    searchTickets: () => void;
+    search: () => void;
 }
 
 const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
     TicketsProps
 ) => {
     const {
-        departureDate,
-        lastDate,
+        options,
         selectDepartureDate,
         selectLastDate,
         selectDepartures,
         selectDestination,
         selectPassenger,
-        searchTickets,
+        search,
     } = TicketsProps;
-
+    console.log(options);
     return (
         <Main bgImg="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80">
             <Section>
@@ -109,7 +108,7 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                     <Wrapper>
                         <Date>
                             <DatePicker
-                                value={departureDate}
+                                value={options.departureDate}
                                 onChange={selectDepartureDate}
                                 calendarClassName="responsive-calendar"
                                 shouldHighlightWeekends
@@ -119,7 +118,7 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                         <Span>~</Span>
                         <Date>
                             <DatePicker
-                                value={lastDate}
+                                value={options.lastDate}
                                 onChange={selectLastDate}
                                 calendarClassName="responsive-calendar"
                                 shouldHighlightWeekends
@@ -147,16 +146,22 @@ const TicketsPresentation: React.FunctionComponent<TicketsPresentationProps> = (
                 </Column>
             </Search>
             <Section>
-                <SearchBtn to="/cosmos/tickets/search" onClick={searchTickets}>
+                <SearchBtn
+                    to={`/cosmos/tickets/search/departures=${options.departures}&destination=${options.destination}&date=${options.departureDate?.day}-${options.departureDate?.month}-${options.departureDate?.year}&passenger=${options.passenger}`}
+                    onClick={search}
+                >
                     Search
                 </SearchBtn>
             </Section>
-
             <Section>
-                <Route
-                    path="/cosmos/tickets/search"
-                    component={SearchTickets}
-                />
+                {options.error ? (
+                    <div>{options.error}</div>
+                ) : (
+                    <Route
+                        path="/cosmos/tickets/search"
+                        component={SearchTickets}
+                    />
+                )}
             </Section>
         </Main>
     );
