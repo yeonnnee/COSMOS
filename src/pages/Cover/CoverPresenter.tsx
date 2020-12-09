@@ -12,7 +12,7 @@ const CoverPresenter: () => JSX.Element = () => {
                 <Desc>
                     Thanks to visit our website.
                     <br />
-                    This is planet tutorial website.
+                    We Provide a Information about Space.
                 </Desc>
             </Section>
             <Section>
