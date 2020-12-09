@@ -206,8 +206,9 @@ const PreviousSection = styled.section`
     bottom: 0;
     left: 0;
     padding: 20px;
-    transform: translateY(65%);
-
+    transform: translateY(${(props: IPreviousSection) => props.status});
+    transition: transform 1s ease;
+    text-align: center;
     @media only screen and (max-width: 1679px) {
         position: relative;
     }
@@ -216,7 +217,7 @@ const PreviousSection = styled.section`
 const Previous = styled.section`
     padding: 20px;
     margin-top: 20px;
-    display: ${(props: IPreviousStatus) => props.status};
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     place-items: center;
@@ -246,6 +247,9 @@ const Button = styled.button`
     height: 30px;
     font-size: 20px;
     position: absolute;
+    background-color: white;
+    outline: none;
+    border: none;
     clip-path: polygon(50% 0, 0 100%, 100% 100%);
     left: 50%;
     transform: translate(-50%, -165%);
@@ -276,7 +280,7 @@ interface ISolNum {
 interface IToggle {
     status: string;
 }
-interface IPreviousStatus {
+interface IPreviousSection {
     status: string;
 }
 interface IDegree {
@@ -285,14 +289,23 @@ interface IDegree {
 interface IWeatherProps {
     solData: ISolDataState;
     currentUnit: string;
+    displayPrev: string;
     selectItem: (e: React.MouseEvent<HTMLButtonElement>) => void;
     convertUnit: () => void;
+    showPrev: () => void;
 }
 
 const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
     weatherProps
 ) => {
-    const { solData, selectItem, currentUnit, convertUnit } = weatherProps;
+    const {
+        solData,
+        selectItem,
+        currentUnit,
+        convertUnit,
+        displayPrev,
+        showPrev,
+    } = weatherProps;
     return (
         <Main>
             {solData.loading ? (
@@ -383,12 +396,13 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                             </Unit>
                         </Desc>
                     </Section>
-                    <PreviousSection>
-                        <Button>
+                    <PreviousSection status={displayPrev}>
+                        <Button onClick={showPrev}>
                             <FontAwesomeIcon icon={faChevronUp} />
                         </Button>
+
                         <PrevText>PREVIOUS 7 DAYS</PrevText>
-                        <Previous status="grid">
+                        <Previous>
                             {solData.previous.map((sol, index) => {
                                 return (
                                     <Item key={index}>

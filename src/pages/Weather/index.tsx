@@ -21,12 +21,22 @@ export interface ISolDataState {
 }
 
 const Weather: () => JSX.Element = () => {
+    const [currentUnit, setCurrentUnit] = useState<string>("C");
+    const [displayPrev, setDisplayPrev] = useState<string>("70%");
     const [solData, setSolData] = useState<ISolDataState>({
         loading: true,
         selected: null,
         previous: [],
     });
-    const [currentUnit, setCurrentUnit] = useState<string>("C");
+
+    function showPrev() {
+        if (displayPrev === "70%") {
+            setDisplayPrev("0%");
+        }
+        if (displayPrev === "0%") {
+            setDisplayPrev("70%");
+        }
+    }
 
     function convertUnit() {
         const selectedMaxTemp = solData.selected?.maxTemp;
@@ -133,6 +143,8 @@ const Weather: () => JSX.Element = () => {
             selectItem={selecteItem}
             convertUnit={convertUnit}
             currentUnit={currentUnit}
+            displayPrev={displayPrev}
+            showPrev={showPrev}
         />
     );
 };
