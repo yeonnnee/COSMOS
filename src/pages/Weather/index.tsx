@@ -4,7 +4,7 @@ import { nasaApi } from "../../api";
 
 import WeatherPresenter from "./WeatherPresenter";
 
-interface ISolData {
+export interface ISolData {
     sol: string;
     maxTemp: undefined | number;
     minTemp: undefined | number;
