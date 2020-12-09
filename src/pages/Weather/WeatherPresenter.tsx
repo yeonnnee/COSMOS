@@ -208,7 +208,7 @@ const PreviousSection = styled.section`
     padding: 20px;
     transform: translateY(${(props: IPreviousSection) => props.status});
     transition: transform 1s ease;
-    text-align: center;
+    /* text-align: center; */
     @media only screen and (max-width: 1679px) {
         position: relative;
     }
@@ -239,7 +239,12 @@ const PrevText = styled.span`
     color: #cf6a87;
     font-size: 25px;
     font-family: "Karla", sans-serif;
-    margin: 15px auto;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    display: block;
+    transform: translateX(
+        ${(props: IPreviousSection) => (props.status === "70%" ? "44%" : "0%")}
+    );
 `;
 
 const Button = styled.button`
@@ -256,7 +261,14 @@ const Button = styled.button`
     cursor: pointer;
     color: #a7a4a4;
 `;
-
+const Icon = styled(FontAwesomeIcon)`
+    transform: rotate(
+            ${(props: IPreviousSection) =>
+                props.status === "70%" ? "0 deg" : "180deg"}
+        )
+        translateY(-5px);
+    transition: transform 1s ease;
+`;
 const More = styled.button`
     outline: none;
     border: none;
@@ -382,8 +394,8 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                 Mars at Elysium Planitia, a flat, smooth plain
                                 near Mars’ equator.
                                 <br />
-                                It is possible to check previous 7 days record
-                                from the latest one.
+                                Nasa provides per-Sol summary data for each of
+                                the last seven available Sols (Martian Days)
                             </Text>
 
                             <Unit>
@@ -398,10 +410,12 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                     </Section>
                     <PreviousSection status={displayPrev}>
                         <Button onClick={showPrev}>
-                            <FontAwesomeIcon icon={faChevronUp} />
+                            <Icon icon={faChevronUp} status={displayPrev} />
                         </Button>
 
-                        <PrevText>PREVIOUS 7 DAYS</PrevText>
+                        <PrevText status={displayPrev}>
+                            PREVIOUS 7 DAYS
+                        </PrevText>
                         <Previous>
                             {solData.previous.map((sol, index) => {
                                 return (
