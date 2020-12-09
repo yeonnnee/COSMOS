@@ -23,14 +23,16 @@ interface Istate {
     min: boolean;
 }
 
-interface IProps {
+interface IPlanetsProps {
     state: Istate;
     getNextItem: () => void;
     getPrevItem: () => void;
     planets: Array<IPlanets>;
 }
 
-const PlanetsPresenter: React.FunctionComponent<IProps> = (PlanetsProps) => {
+const PlanetsPresenter: React.FunctionComponent<IPlanetsProps> = (
+    PlanetsProps
+) => {
     const { state, getNextItem, getPrevItem, planets } = PlanetsProps;
 
     return (

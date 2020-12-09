@@ -8,11 +8,11 @@ interface Iapod {
     hdurl: string;
     title: string;
 }
-interface Istate {
+interface IHomeProps {
     apod: Iapod;
 }
 
-const GalleryPresenter: React.FunctionComponent<Istate> = (homeProps) => {
+const GalleryPresenter: React.FunctionComponent<IHomeProps> = (homeProps) => {
     const { apod } = homeProps;
     return (
         <Main>

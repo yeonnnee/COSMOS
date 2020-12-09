@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface ISolNum {
+interface ISolNumProps {
     fontSize: string;
 }
-interface IToggle {
+interface IToggleProps {
     status: string;
 }
-interface IPreviousSection {
+interface IPreviousSectionProps {
     status: string;
 }
-interface IDegree {
+interface IDegreeProps {
     degrees: undefined | string;
 }
-interface MainProps {
+interface IMainProps {
     bgImg: string;
 }
 
@@ -24,7 +24,7 @@ export const Main = styled.main`
     grid-template-columns: repeat(auto-fit, minmax(0.7fr, 1fr));
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
-    background-image: url(${(props: MainProps) => props.bgImg});
+    background-image: url(${(props: IMainProps) => props.bgImg});
     background-size: cover;
 `;
 export const Section = styled.section`
@@ -46,7 +46,6 @@ export const Info = styled.div`
     gap: 30px;
 `;
 export const Column = styled.div`
-    font-family: "Raleway", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,7 +79,7 @@ export const Column = styled.div`
 `;
 
 export const SolNum = styled.h1`
-    font-size: ${(props: ISolNum) => props.fontSize};
+    font-size: ${(props: ISolNumProps) => props.fontSize};
     font-family: "Abel", sans-serif;
     font-weight: bold;
 `;
@@ -100,6 +99,7 @@ export const Title = styled.h1`
     font-family: "Raleway", sans-serif;
 `;
 export const BoxTitle = styled.h3`
+    font-family: "Titillium Web", sans-serif;
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 1.5px;
@@ -165,7 +165,8 @@ export const Degrees = styled.div`
     height: 45px;
     background-color: #53323b;
     clip-path: polygon(50% 0, 0% 100%, 100% 100%);
-    transform: translateY(-50%) rotate(${(props: IDegree) => props.degrees}deg);
+    transform: translateY(-50%)
+        rotate(${(props: IDegreeProps) => props.degrees}deg);
     transform-origin: bottom center;
     transition: transform 2s ease;
 `;
@@ -212,7 +213,7 @@ export const Toggle = styled.div`
         width: 16px;
         margin: 2px;
         transform: translateX(
-            ${(props: IToggle) => (props.status === "C" ? 25 : 0)}px
+            ${(props: IToggleProps) => (props.status === "C" ? 25 : 0)}px
         );
         transition: transform 1s ease;
     }
@@ -234,7 +235,7 @@ export const PreviousSection = styled.section`
     bottom: 0;
     left: 0;
     padding: 20px;
-    transform: translateY(${(props: IPreviousSection) => props.status});
+    transform: translateY(${(props: IPreviousSectionProps) => props.status});
     transition: transform 1s ease;
 
     @media only screen and (max-width: 1679px) {
@@ -252,7 +253,7 @@ export const PrevText = styled.span`
     font-weight: bold;
     display: block;
     transform: translateX(
-            ${(props: IPreviousSection) =>
+            ${(props: IPreviousSectionProps) =>
                 props.status === "65%" ? "44%" : "0%"}
         )
         translateY(40%);
@@ -289,7 +290,7 @@ export const Button = styled.button`
 `;
 export const Icon = styled(FontAwesomeIcon)`
     transform: rotate(
-            ${(props: IPreviousSection) =>
+            ${(props: IPreviousSectionProps) =>
                 props.status === "65%" ? "0 deg" : "180deg"}
         )
         translateY(-5px);

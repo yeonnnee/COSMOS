@@ -4,12 +4,12 @@ import { ISolData } from "../index";
 import { Previous, Item, More, PrevDate } from "./styles";
 import { SolNum, Temperature, Data, TempText, DataText } from "../styles";
 
-interface PreviousDataProps {
+interface IPreviousDataProps {
     previous: Array<ISolData>;
     selectItem: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const PreviousData: React.FunctionComponent<PreviousDataProps> = (
+const PreviousData: React.FunctionComponent<IPreviousDataProps> = (
     prevProps
 ) => {
     return (
