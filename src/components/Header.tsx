@@ -8,7 +8,7 @@ const HeaderSection = styled.header`
     width: 100%;
     height: 30px;
     padding: 20px;
-    background-color: ${(props: Iheader) => props.color};
+    background-color: #181717;
     font-family: "Texturina", serif;
     display: ${(props: Iheader) => (props.show === "true" ? "none" : "flex")};
     justify-content: center;
@@ -41,19 +41,11 @@ const HeaderLink = styled(Link)`
 
 interface Iheader {
     show: string;
-    color: string;
 }
 
 const Header: () => JSX.Element = () => {
     return (
-        <HeaderSection
-            show={location.pathname === "/" ? "true" : "false"}
-            color={
-                location.pathname.includes("tickets")
-                    ? "rgba(158, 156, 156, 0.4)"
-                    : "#181717"
-            }
-        >
+        <HeaderSection show={location.pathname === "/" ? "true" : "false"}>
             <Title>
                 <HeaderLink to="/cosmos/planets">
                     <Icon icon={faRocket} />

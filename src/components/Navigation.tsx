@@ -11,7 +11,7 @@ const Nav = styled.nav`
     font-family: "Texturina", serif;
     display: ${(props: INav) => (props.show === "true" ? "none" : "flex")};
     justify-content: center;
-    background-color: ${(props: INav) => props.color};
+    background-color: #181717;
     position: fixed;
     z-index: 1;
 `;
@@ -35,7 +35,6 @@ interface ILink {
 
 interface INav {
     show: string;
-    color: string;
 }
 // #535c68
 const Navigation = withRouter((navProps) => {
@@ -43,14 +42,7 @@ const Navigation = withRouter((navProps) => {
     return (
         <>
             <Header />
-            <Nav
-                show={location.pathname === "/" ? "true" : "false"}
-                color={
-                    location.pathname.includes("tickets")
-                        ? "rgba(158, 156, 156, 0.4)"
-                        : "#181717"
-                }
-            >
+            <Nav show={location.pathname === "/" ? "true" : "false"}>
                 <NavList>
                     <NavLink
                         to="/cosmos/gallery"
