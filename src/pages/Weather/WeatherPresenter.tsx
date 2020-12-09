@@ -53,7 +53,7 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
         showPrev,
     } = weatherProps;
     return (
-        <Main>
+        <Main bgImg="https://www.vaisala.com/sites/default/files/inline-images/LIFT-Mars-space-sun-800x450.jpg">
             {solData.loading ? (
                 <h1>Loading</h1>
             ) : (

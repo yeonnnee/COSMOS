@@ -13,6 +13,9 @@ interface IPreviousSection {
 interface IDegree {
     degrees: undefined | string;
 }
+interface MainProps {
+    bgImg: string;
+}
 
 export const Main = styled.main`
     padding: 150px 20px 20px 20px;
@@ -21,10 +24,12 @@ export const Main = styled.main`
     grid-template-columns: repeat(auto-fit, minmax(0.7fr, 1fr));
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
+    background-image: url(${(props: MainProps) => props.bgImg});
+    background-size: cover;
 `;
 export const Section = styled.section`
     display: grid;
-    background-color: rgba(158, 156, 156, 0.4);
+    background-color: rgba(71, 70, 70, 0.4);
     padding: 40px;
     transform: translateY(20%);
     @media only screen and (max-width: 1679px) {
@@ -90,7 +95,7 @@ export const Title = styled.h1`
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #786fa6;
+    color: #3c6382;
     letter-spacing: 2px;
     font-family: "Raleway", sans-serif;
 `;
@@ -186,7 +191,7 @@ export const Toggle = styled.div`
     width: 50px;
     height: 25px;
     background-color: ${(props) =>
-        props.status === "C" ? "#b65f78" : "rgba(207, 202, 202, 0.4)"};
+        props.status === "C" ? "#3c6382" : "rgba(207, 202, 202, 0.4)"};
     transition: background-color 2s ease;
     border: 2px solid white;
     border-radius: 30px;
@@ -218,7 +223,7 @@ export const Label = styled.span`
 
 export const PreviousSection = styled.section`
     width: 100%;
-    background-color: white;
+    background-color: #ecf0f1;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -236,12 +241,15 @@ export const PrevText = styled.span`
     color: #cf6a87;
     font-size: 25px;
     font-family: "Karla", sans-serif;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px #83495a;
     font-weight: bold;
     display: block;
     transform: translateX(
-        ${(props: IPreviousSection) => (props.status === "70%" ? "44%" : "0%")}
-    );
+            ${(props: IPreviousSection) =>
+                props.status === "65%" ? "44%" : "0%"}
+        )
+        translateY(40%);
     @media only screen and (max-width: 652px) {
         position: relative;
         transform: translateX(30%);
@@ -261,7 +269,7 @@ export const Button = styled.button`
     height: 30px;
     font-size: 20px;
     position: absolute;
-    background-color: white;
+    background-color: #ecf0f1;
     outline: none;
     border: none;
     clip-path: polygon(50% 0, 0 100%, 100% 100%);
@@ -276,7 +284,7 @@ export const Button = styled.button`
 export const Icon = styled(FontAwesomeIcon)`
     transform: rotate(
             ${(props: IPreviousSection) =>
-                props.status === "70%" ? "0 deg" : "180deg"}
+                props.status === "65%" ? "0 deg" : "180deg"}
         )
         translateY(-5px);
     transition: transform 1s ease;
