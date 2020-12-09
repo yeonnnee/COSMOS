@@ -34,5 +34,8 @@ font-family: 'Karla', sans-serif;
 font-family: 'Caveat', cursive;
 font-family: 'Pompiere', cursive;
 font-family: 'Electrolize', sans-serif;
-
+font-family: 'Abel', sans-serif;
+font-family: 'Barlow Condensed', sans-serif;
+font-family: 'Open Sans Condensed', sans-serif;
+font-family: 'Titillium Web', sans-serif;
 */
