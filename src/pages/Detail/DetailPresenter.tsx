@@ -7,7 +7,6 @@ import {
     Name,
     Desc,
     Intro,
-    BuyBtn,
     Img,
     Info,
     Column,
@@ -31,7 +30,6 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
                 <Intro>
                     <Name>{planet?.name}</Name>
                     <Desc>{planet?.detail}</Desc>
-                    {/* <BuyBtn to="/cosmos/tickets">Buy Ticket</BuyBtn> */}
                 </Intro>
                 <Img bgImg={planet?.imgUrl}></Img>
             </Section>

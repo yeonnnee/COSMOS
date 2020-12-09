@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 interface IImageProps {
     bgImg: undefined | string;
@@ -84,22 +83,4 @@ export const SmallText = styled.div`
     position: relative;
     top: -18px;
     opacity: 0.7;
-`;
-export const BuyBtn = styled(Link)`
-    width: 130px;
-    height: 50px;
-    text-decoration: none;
-    border: 1px solid#f1c40f;
-    font-size: 18px;
-    font-family: "Raleway", sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    margin-left: 20px;
-    color: #f1c40f;
-    cursor: pointer;
-    &:hover {
-        background-color: rgba(158, 156, 156, 0.4);
-    }
 `;
