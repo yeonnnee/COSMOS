@@ -22,7 +22,7 @@ export interface ISolDataState {
 
 const Weather: () => JSX.Element = () => {
     const [currentUnit, setCurrentUnit] = useState<string>("C");
-    const [displayPrev, setDisplayPrev] = useState<string>("70%");
+    const [displayPrev, setDisplayPrev] = useState<string>("65%");
     const [solData, setSolData] = useState<ISolDataState>({
         loading: true,
         selected: null,
@@ -30,11 +30,11 @@ const Weather: () => JSX.Element = () => {
     });
 
     function showPrev() {
-        if (displayPrev === "70%") {
+        if (displayPrev === "65%") {
             setDisplayPrev("0%");
         }
         if (displayPrev === "0%") {
-            setDisplayPrev("70%");
+            setDisplayPrev("65%");
         }
     }
 

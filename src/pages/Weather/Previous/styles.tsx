@@ -25,8 +25,8 @@ export const More = styled.button`
     outline: none;
     border: none;
     box-shadow: 1px 1px 3px black;
-    /* background-color: #503c42; */
-    color: black;
+    background-color: #3c6382;
+    color: white;
     padding: 2px 10px;
     transform: translateY(20px);
     border-radius: 3px;
