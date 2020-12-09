@@ -15,7 +15,6 @@ export interface ISolData {
     date: string;
 }
 export interface ISolDataState {
-    loading: boolean;
     selected: null | ISolData;
     previous: Array<ISolData>;
 }
@@ -24,7 +23,6 @@ const Weather: () => JSX.Element = () => {
     const [currentUnit, setCurrentUnit] = useState<string>("C");
     const [displayPrev, setDisplayPrev] = useState<string>("65%");
     const [solData, setSolData] = useState<ISolDataState>({
-        loading: true,
         selected: null,
         previous: [],
     });
@@ -52,17 +50,16 @@ const Weather: () => JSX.Element = () => {
 
         //* fahrenheit to celsius *//
         const celMaxTemp = selectedMaxTemp
-            ? (selectedMaxTemp - 32) / 1.8
+            ? Math.round((selectedMaxTemp - 32) / 1.8)
             : undefined;
         const celMinTemp = selectedMinTemp
-            ? (selectedMinTemp - 32) / 1.8
+            ? Math.round((selectedMinTemp - 32) / 1.8)
             : undefined;
 
         //* convert *//
         if (currentUnit === "C") {
             setCurrentUnit("F");
             setSolData({
-                loading: false,
                 selected: solData.selected
                     ? {
                           ...solData.selected,
@@ -76,7 +73,6 @@ const Weather: () => JSX.Element = () => {
         if (currentUnit === "F") {
             setCurrentUnit("C");
             setSolData({
-                loading: false,
                 selected: solData.selected
                     ? {
                           ...solData.selected,
@@ -94,7 +90,6 @@ const Weather: () => JSX.Element = () => {
             (sol) => sol.sol == `${target}`
         );
         setSolData({
-            loading: false,
             selected: selected[0],
             previous: solData.previous,
         });
@@ -114,7 +109,7 @@ const Weather: () => JSX.Element = () => {
 
                 const solData = {
                     sol: sol_keys[i],
-                    maxTemp: Math.round(sol.AT?.mx),
+                    maxTemp: Math.round(sol.AT?.max),
                     minTemp: Math.round(sol.AT?.mn),
                     season: sol.Season,
                     windSpeed: Math.round(sol.HWS?.av),
@@ -125,7 +120,6 @@ const Weather: () => JSX.Element = () => {
                 result.push(solData);
             }
             setSolData({
-                loading: false,
                 selected: result[result.length - 1],
                 previous: result,
             });
