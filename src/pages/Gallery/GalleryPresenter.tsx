@@ -1,13 +1,8 @@
 import React from "react";
 
 import { SectionTitle, Desc, Main, Section, Date, Title, Img } from "./styles";
+import { Iapod } from "./index";
 
-interface Iapod {
-    date: string;
-    explanation: string;
-    hdurl: string;
-    title: string;
-}
 interface IHomeProps {
     apod: Iapod;
 }

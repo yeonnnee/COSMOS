@@ -2,7 +2,7 @@ import React from "react";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { IPlanets } from ".";
+import { IPlanets, Istate } from ".";
 import {
     Carousel,
     Item,
@@ -15,13 +15,6 @@ import {
     Desc,
     BookLink,
 } from "./styles";
-
-interface Istate {
-    currentGroup: number;
-    left: number;
-    max: boolean;
-    min: boolean;
-}
 
 interface IPlanetsProps {
     state: Istate;

@@ -3,8 +3,15 @@ import { nasaApi } from "../../api";
 
 import GalleryPresenter from "./GalleryPresenter";
 
+export interface Iapod {
+    date: string;
+    explanation: string;
+    hdurl: string;
+    title: string;
+}
+
 const Gallery: () => JSX.Element = () => {
-    const [apod, setApod] = useState({
+    const [apod, setApod] = useState<Iapod>({
         date: "",
         explanation: "",
         hdurl: "",

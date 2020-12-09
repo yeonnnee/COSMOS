@@ -8,9 +8,15 @@ export interface IPlanets {
     imgUrl: string;
     desc: string;
 }
+export interface Istate {
+    currentGroup: number;
+    left: number;
+    max: boolean;
+    min: boolean;
+}
 
 const Planets: () => JSX.Element = () => {
-    const [state, setState] = useState({
+    const [state, setState] = useState<Istate>({
         currentGroup: 1,
         left: 0,
         max: false,
