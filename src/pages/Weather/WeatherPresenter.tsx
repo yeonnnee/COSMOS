@@ -1,5 +1,5 @@
 import React from "react";
-import { ICurrentUnit, ISolDataState } from ".";
+import { ISolDataState } from ".";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
@@ -284,7 +284,7 @@ interface IDegree {
 }
 interface IWeatherProps {
     solData: ISolDataState;
-    currentUnit: ICurrentUnit;
+    currentUnit: string;
     selectItem: (e: React.MouseEvent<HTMLButtonElement>) => void;
     convertUnit: () => void;
 }
@@ -324,7 +324,7 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                                     {solData.selected?.maxTemp}°
                                                 </Number>
                                                 <TempUnit>
-                                                    {currentUnit.checked}
+                                                    {currentUnit}
                                                 </TempUnit>
                                             </Data>
                                             <Data>
@@ -333,7 +333,7 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                                     {solData.selected?.minTemp}°
                                                 </Number>
                                                 <TempUnit>
-                                                    {currentUnit.checked}
+                                                    {currentUnit}
                                                 </TempUnit>
                                             </Data>
                                         </>
@@ -377,7 +377,7 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                                 <Label onClick={convertUnit}>°C</Label>
                                 <Toggle
                                     onClick={convertUnit}
-                                    status={currentUnit.checked}
+                                    status={currentUnit}
                                 ></Toggle>
                                 <Label onClick={convertUnit}>°F</Label>
                             </Unit>

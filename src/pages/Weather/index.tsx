@@ -20,19 +20,13 @@ export interface ISolDataState {
     previous: Array<ISolData>;
 }
 
-export interface ICurrentUnit {
-    checked: string;
-}
-
 const Weather: () => JSX.Element = () => {
     const [solData, setSolData] = useState<ISolDataState>({
         loading: true,
         selected: null,
         previous: [],
     });
-    const [currentUnit, setCurrentUnit] = useState({
-        checked: "C",
-    });
+    const [currentUnit, setCurrentUnit] = useState<string>("C");
 
     function convertUnit() {
         const selectedMaxTemp = solData.selected?.maxTemp;
@@ -55,8 +49,8 @@ const Weather: () => JSX.Element = () => {
             : undefined;
 
         //* convert *//
-        if (currentUnit.checked === "C") {
-            setCurrentUnit({ checked: "F" });
+        if (currentUnit === "C") {
+            setCurrentUnit("F");
             setSolData({
                 loading: false,
                 selected: solData.selected
@@ -69,8 +63,8 @@ const Weather: () => JSX.Element = () => {
                 previous: solData.previous,
             });
         }
-        if (currentUnit.checked === "F") {
-            setCurrentUnit({ checked: "C" });
+        if (currentUnit === "F") {
+            setCurrentUnit("C");
             setSolData({
                 loading: false,
                 selected: solData.selected
