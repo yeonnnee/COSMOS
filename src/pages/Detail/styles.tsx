@@ -10,7 +10,7 @@ export const Main = styled.main`
     height: 100%;
     padding: 20px;
     background-color: black;
-    font-family: "Caveat", cursive;
+    font-family: "Titillium Web", sans-serif;
 `;
 export const Section = styled.section`
     width: 100%;
@@ -74,7 +74,7 @@ export const Title = styled.div`
 export const Text = styled.div`
     width: 100%;
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     padding: 25px;
 `;
 export const SmallText = styled.div`

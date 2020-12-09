@@ -81,7 +81,7 @@ export const Column = styled.div`
 
 export const SolNum = styled.h1`
     font-size: ${(props: ISolNum) => props.fontSize};
-    font-family: "Raleway", sans-serif;
+    font-family: "Abel", sans-serif;
     font-weight: bold;
 `;
 
@@ -110,24 +110,30 @@ export const Temperature = styled.div`
 `;
 
 export const DataText = styled.span`
-    margin: 0 5px;
-    font-family: "Electrolize", sans-serif;
+    margin: 0 2px;
+    font-family: "Abel", sans-serif;
 `;
-export const TempText = styled.div``;
+export const TempText = styled.div`
+    font-family: "Titillium Web", sans-serif;
+`;
 
 export const Data = styled.div`
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: "Karla", sans-serif;
     font-size: 18px;
     opacity: 0.5;
     display: flex;
     justify-content: center;
+    &:nth-child(1) {
+        margin-top: 20px;
+    }
 `;
 
 export const Season = styled.h3`
     margin-top: 20px;
     font-size: 35px;
     opacity: 0.5;
+    font-family: "Titillium Web", sans-serif;
     &::first-letter {
         text-transform: uppercase;
     }
