@@ -9,7 +9,7 @@ interface LinkProps {
     num: number;
 }
 
-const PicSlide = keyframes`
+const RotatePlanet = keyframes`
     0% {
         transform:perspective(500px) rotateY(0deg);
     }
@@ -25,12 +25,7 @@ export const Main = styled.main`
     justify-content: space-around;
     background-color: black;
 `;
-export const Carousel = styled.div`
-    /* width: 1480px;
-    overflow: hidden;
-    position: relative;
-    height: 500px;
-    margin-top: 200px; */
+export const Box = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +36,7 @@ export const List = styled.div`
     height: 500px;
     position: relative;
     transform-style: preserve-3d;
-    animation: ${PicSlide} 20s linear infinite;
+    animation: ${RotatePlanet} 20s linear infinite;
 `;
 
 export const PlanetLink = styled(Link)`
@@ -63,14 +58,13 @@ export const Info = styled.section`
     display: none;
     transform: rotateY(180deg);
 `;
-export const Item = styled.div`
-    /* border: 1px solid white; */
+export const Planet = styled.div`
     padding: 10px;
     width: 100%;
     height: 100%;
-    /* background-color: #d1ccc0; */
     background-color: black;
     cursor: pointer;
+
     &:hover ${Info} {
         display: block;
     }
@@ -84,29 +78,16 @@ export const Img = styled.div`
     align-items: center;
     justify-content: center;
 `;
-export const Btn = styled.div`
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    font-size: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    &:hover {
-        border: 2px solid #d1ccc0;
-    }
-`;
 
 export const Name = styled.div`
     color: #5e5037;
-    font-size: 20px;
+    font-size: 50px;
     font-family: "Karla", sans-serif;
     font-weight: bold;
     letter-spacing: 2px;
 `;
 export const Desc = styled.div`
-    font-size: 18px;
+    font-size: 30px;
     line-height: 1.5;
     color: #747069;
     margin-top: 20px;

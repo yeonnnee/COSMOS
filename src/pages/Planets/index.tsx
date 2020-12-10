@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { db } from "../../firebase";
 import PlanetsPresenter from "./PlanetsPresenter";
 
@@ -8,74 +9,11 @@ export interface IPlanets {
     imgUrl: string;
     desc: string;
 }
-export interface Istate {
-    currentGroup: number;
-    left: number;
-    max: boolean;
-    min: boolean;
-}
 
 const Planets: () => JSX.Element = () => {
-    const [state, setState] = useState<Istate>({
-        currentGroup: 1,
-        left: 0,
-        max: false,
-        min: true,
-    });
-
     const [planets, setPlanets] = useState<Array<IPlanets>>([
         { id: 0, name: "", imgUrl: "", desc: "" },
     ]);
-
-    function getNextItem() {
-        if (state.currentGroup === 1) {
-            setState({
-                currentGroup: state.currentGroup + 1,
-                left: -state.currentGroup * 350 * 4 + -60,
-                max: false,
-                min: false,
-            });
-        } else if (state.currentGroup === 2) {
-            setState({
-                currentGroup: state.currentGroup + 1,
-                left: state.left - 370,
-                max: false,
-                min: false,
-            });
-        } else {
-            setState({
-                currentGroup: state.currentGroup,
-                left: state.left,
-                max: true,
-                min: false,
-            });
-        }
-    }
-
-    function getPrevItem() {
-        if (state.currentGroup === 1) {
-            setState({
-                currentGroup: state.currentGroup,
-                left: state.left,
-                max: false,
-                min: true,
-            });
-        } else if (state.currentGroup === 2) {
-            setState({
-                currentGroup: state.currentGroup - 1,
-                left: state.left + 370 * 4,
-                max: true,
-                min: false,
-            });
-        } else {
-            setState({
-                currentGroup: state.currentGroup - 1,
-                left: state.left + 370,
-                max: true,
-                min: false,
-            });
-        }
-    }
 
     async function fetchData() {
         try {
@@ -105,14 +43,7 @@ const Planets: () => JSX.Element = () => {
     useEffect(() => {
         fetchData();
     }, []);
-    return (
-        <PlanetsPresenter
-            state={state}
-            getNextItem={getNextItem}
-            getPrevItem={getPrevItem}
-            planets={planets}
-        />
-    );
+    return <PlanetsPresenter planets={planets} />;
 };
 
 export default Planets;
