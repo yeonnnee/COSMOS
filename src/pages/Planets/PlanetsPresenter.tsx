@@ -13,7 +13,7 @@ import {
     Info,
     Name,
     Desc,
-    BookLink,
+    PlanetLink,
 } from "./styles";
 
 interface IPlanetsProps {
@@ -30,15 +30,16 @@ const PlanetsPresenter: React.FunctionComponent<IPlanetsProps> = (
 
     return (
         <Main>
-            <Btn onClick={getPrevItem}>
+            {/* <Btn onClick={getPrevItem}>
                 <FontAwesomeIcon icon={faAngleLeft} />
-            </Btn>
+            </Btn> */}
             <Carousel>
-                <List left={state.left} ItemNum={planets.length}>
+                <List>
                     {planets.map((planet, index) => (
-                        <BookLink
+                        <PlanetLink
                             to={`/cosmos/planets/${planet.name}`}
                             key={index}
+                            num={index + 1}
                         >
                             <Item>
                                 <Img imgUrl={planet.imgUrl}></Img>
@@ -47,13 +48,13 @@ const PlanetsPresenter: React.FunctionComponent<IPlanetsProps> = (
                                     <Desc>{planet.desc}</Desc>
                                 </Info>
                             </Item>
-                        </BookLink>
+                        </PlanetLink>
                     ))}
                 </List>
             </Carousel>
-            <Btn onClick={getNextItem}>
+            {/* <Btn onClick={getNextItem}>
                 <FontAwesomeIcon icon={faAngleRight} />
-            </Btn>
+            </Btn> */}
         </Main>
     );
 };

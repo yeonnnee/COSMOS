@@ -1,56 +1,78 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-interface IListProps {
-    left: number;
-    ItemNum: number;
-}
 
 interface ImageProps {
     imgUrl: string;
 }
+
+interface LinkProps {
+    num: number;
+}
+
+const PicSlide = keyframes`
+    0% {
+        transform:perspective(500px) rotateY(0deg);
+    }
+    100% {
+        transform:perspective(500px) rotateY(360deg);
+    }
+`;
 
 export const Main = styled.main`
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    background-color: black;
 `;
 export const Carousel = styled.div`
-    width: 1480px;
+    /* width: 1480px;
     overflow: hidden;
     position: relative;
     height: 500px;
-    margin-top: 200px;
+    margin-top: 200px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 `;
-export const List = styled.ul`
-    position: absolute;
-    display: grid;
-    grid-template-columns: repeat(
-        ${(props: IListProps) => props.ItemNum},
-        350px
-    );
-    grid-template-rows: 500px;
-    gap: 20px;
-    left: ${(props: IListProps) => props.left + `px`};
-    transition: left 0.5s ease-out;
-`;
-export const BookLink = styled(Link)`
-    text-decoration: none;
+export const List = styled.div`
+    width: 350px;
+    height: 500px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: ${PicSlide} 20s linear infinite;
 `;
 
-export const Item = styled.li`
-    border: 1px solid white;
+export const PlanetLink = styled(Link)`
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(${(props: LinkProps) => props.num}*45deg))
+        translateZ(800px);
+`;
+
+export const Info = styled.section`
+    text-align: center;
+    margin-top: 30px;
+    display: none;
+    transform: rotateY(180deg);
+`;
+export const Item = styled.div`
+    /* border: 1px solid white; */
     padding: 10px;
     width: 100%;
     height: 100%;
-    background-color: #d1ccc0;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+    /* background-color: #d1ccc0; */
+    background-color: black;
     cursor: pointer;
-    &:hover {
-        background-color: black;
-        /* display: block; */
+    &:hover ${Info} {
+        display: block;
     }
 `;
 
@@ -74,11 +96,6 @@ export const Btn = styled.div`
     &:hover {
         border: 2px solid #d1ccc0;
     }
-`;
-
-export const Info = styled.section`
-    text-align: center;
-    margin-top: 30px;
 `;
 
 export const Name = styled.div`
