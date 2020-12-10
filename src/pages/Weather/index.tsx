@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { nasaApi } from "../../api";
-
 import WeatherPresenter from "./WeatherPresenter";
+import { db } from "../../firebase";
 
 export interface ISolData {
     sol: string;
@@ -11,9 +11,10 @@ export interface ISolData {
     season: string;
     windSpeed: undefined | number;
     windDirectionDegrees: undefined | number;
-    windDirectionCardinal: undefined | number;
+    windDirectionCardinal: undefined | string;
     date: string;
 }
+
 export interface ISolDataState {
     selected: null | ISolData;
     previous: Array<ISolData>;
@@ -42,10 +43,10 @@ const Weather: () => JSX.Element = () => {
 
         //* celsius to Fah *//
         const fahMaxTemp = selectedMaxTemp
-            ? selectedMaxTemp * 1.8 + 32
+            ? Math.round(selectedMaxTemp * 1.8 + 32)
             : undefined;
         const fahMinTemp = selectedMinTemp
-            ? selectedMinTemp * 1.8 + 32
+            ? Math.round(selectedMinTemp * 1.8 + 32)
             : undefined;
 
         //* fahrenheit to celsius *//
@@ -84,6 +85,7 @@ const Weather: () => JSX.Element = () => {
             });
         }
     }
+
     function selecteItem(e: React.MouseEvent<HTMLButtonElement>) {
         const target = e.currentTarget.id;
         const selected = solData.previous.filter(
@@ -94,6 +96,29 @@ const Weather: () => JSX.Element = () => {
             previous: solData.previous,
         });
     }
+
+    async function getExample() {
+        const exampleRef = db.collection("exampleData");
+        const querySnapshot = await exampleRef.get();
+        const exampleData: Array<ISolData> = [];
+        querySnapshot.forEach(function (doc) {
+            exampleData.push({
+                sol: doc.data().sol,
+                maxTemp: doc.data().maxTemp,
+                minTemp: doc.data().minTemp,
+                season: doc.data().season,
+                windSpeed: doc.data().windSpeed,
+                windDirectionDegrees: doc.data().windDirectionDegrees,
+                windDirectionCardinal: doc.data().windDirectionCardinal,
+                date: doc.data().date,
+            });
+        });
+        setSolData({
+            selected: exampleData[exampleData.length - 1],
+            previous: exampleData,
+        });
+    }
+
     async function fetchData() {
         try {
             const res = await nasaApi.insight();
@@ -119,6 +144,9 @@ const Weather: () => JSX.Element = () => {
                 };
                 result.push(solData);
             }
+            if (!result[0].maxTemp) {
+                getExample();
+            }
             setSolData({
                 selected: result[result.length - 1],
                 previous: result,
@@ -131,6 +159,7 @@ const Weather: () => JSX.Element = () => {
     useEffect(() => {
         fetchData();
     }, []);
+
     return (
         <WeatherPresenter
             solData={solData}
