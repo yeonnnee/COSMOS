@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 interface IImageProps {
     bgImg: undefined | string;
 }
@@ -20,6 +20,19 @@ export const Section = styled.section`
     @media only screen and (max-width: 1050px) {
         grid-template-rows: 1fr 1fr;
     }
+`;
+export const More = styled.div`
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const PlanetLink = styled(Link)``;
+export const Planets = styled.div``;
+export const MorePlanets = styled.img`
+    width: 200px;
 `;
 export const Img = styled.div`
     width: 100%;
@@ -83,4 +96,18 @@ export const SmallText = styled.div`
     position: relative;
     top: -18px;
     opacity: 0.7;
+`;
+
+export const Btn = styled.div`
+    width: 30px;
+    height: 60px;
+
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+        border: 2px solid #d1ccc0;
+    }
 `;

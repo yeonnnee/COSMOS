@@ -3,9 +3,21 @@ import DetailPresenter from "./DetailPresenter";
 
 import { db } from "../../firebase";
 
+export interface Istate {
+    currentGroup: number;
+    left: number;
+    max: boolean;
+    min: boolean;
+}
 export interface IDiameter {
     equatorialDiameter: string;
     polarDiameter: string;
+}
+
+export interface IPlanets {
+    id: number;
+    name: string;
+    imgUrl: string;
 }
 
 export interface IPlanet {
@@ -24,14 +36,24 @@ export interface IPlanet {
 
 const Detail: () => JSX.Element = () => {
     const [planet, setPlanet] = useState<IPlanet>();
+    const [planets, setPlanets] = useState<Array<IPlanets>>([]);
+    const [selected, setSelected] = useState<string>("");
 
-    const getPlanet = async () => {
+    function updatePlanet(e: React.MouseEvent) {
+        setSelected(e.currentTarget?.id);
+    }
+
+    async function getPlanet() {
         try {
             const target = location.pathname.toString().split("/")[3];
 
-            const palnetRef = db.collection("planets").doc(`${target}`);
+            const collection = db.collection("planets");
+            const palnetRef = collection.doc(`${target}`);
+
+            const res = await collection.get();
             const doc = await palnetRef.get();
 
+            // 선택된 행성
             const result = doc?.data();
             if (result) {
                 setPlanet({
@@ -44,16 +66,42 @@ const Detail: () => JSX.Element = () => {
                     surfaceTemperature: result.surfaceTemperature,
                     gravity: result.gravity,
                 });
+                setSelected(result.name);
             }
+
+            // 전체 행성
+            const planets: Array<IPlanets> = [];
+
+            res.forEach((document) =>
+                planets.push({
+                    id: document.data().id,
+                    name: document.data().name,
+                    imgUrl: document.data().imgUrl,
+                })
+            );
+
+            planets.sort(function (a, b) {
+                const one = a.id;
+                const next = b.id;
+
+                return one - next;
+            });
+            setPlanets(planets);
         } catch (error) {
             console.log(error);
         }
-    };
+    }
 
     useEffect(() => {
         getPlanet();
-    }, []);
+    }, [selected]);
 
-    return <DetailPresenter planet={planet} />;
+    return (
+        <DetailPresenter
+            planet={planet}
+            planets={planets}
+            updatePlanet={updatePlanet}
+        />
+    );
 };
 export default Detail;

@@ -1,8 +1,11 @@
 import React from "react";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { IPlanet } from "./index";
+import { IPlanet, IPlanets } from "./index";
 import {
     Main,
+    More,
     Section,
     Name,
     Desc,
@@ -13,15 +16,22 @@ import {
     Title,
     Text,
     SmallText,
+    Btn,
+    Planets,
+    MorePlanets,
+    PlanetLink,
 } from "./styles";
+
 interface IDatailProps {
     planet: undefined | IPlanet;
+    planets: Array<IPlanets>;
+    updatePlanet: (e: React.MouseEvent) => void;
 }
 
 const DetailPresenter: React.FunctionComponent<IDatailProps> = (
     detailProps
 ) => {
-    const { planet } = detailProps;
+    const { planet, planets, updatePlanet } = detailProps;
     const orbitPeriod = planet?.orbitPeriod;
 
     return (
@@ -30,6 +40,28 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
                 <Intro>
                     <Name>{planet?.name}</Name>
                     <Desc>{planet?.detail}</Desc>
+                    <More>
+                        <Btn>
+                            <FontAwesomeIcon icon={faAngleLeft} />
+                        </Btn>
+                        <Planets>
+                            {planets.map((planet, index) => {
+                                return (
+                                    <PlanetLink
+                                        to={`/cosmos/planets/${planet.name}`}
+                                        key={index}
+                                        id={planet.name}
+                                        onClick={updatePlanet}
+                                    >
+                                        <MorePlanets src={planet.imgUrl} />
+                                    </PlanetLink>
+                                );
+                            })}
+                        </Planets>
+                        <Btn>
+                            <FontAwesomeIcon icon={faAngleRight} />
+                        </Btn>
+                    </More>
                 </Intro>
                 <Img bgImg={planet?.imgUrl}></Img>
             </Section>
