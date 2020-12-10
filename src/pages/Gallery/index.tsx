@@ -17,10 +17,38 @@ const Gallery: () => JSX.Element = () => {
         hdurl: "",
         title: "",
     });
+    const [pictures, setPictures] = useState<Array<Iapod>>([]);
 
     async function FetchData() {
         try {
             const res = await nasaApi.apod();
+            const today = new Date();
+            const date = today.getDate();
+            const pictures = [];
+            for (let i = 20; i < 30; i++) {
+                if (i < 10) {
+                    const res = await nasaApi.pic(`2020-11-0${i}`);
+                    const pic = {
+                        date: res.data.date,
+                        explanation: res.data.explanation,
+                        hdurl: res.data.hdurl,
+                        title: res.data.title,
+                    };
+                    pictures.push(pic);
+                } else {
+                    const res = await nasaApi.pic(`2020-11-${i}`);
+                    const pic = {
+                        date: res.data.date,
+                        explanation: res.data.explanation,
+                        hdurl: res.data.hdurl,
+                        title: res.data.title,
+                    };
+                    pictures.push(pic);
+                }
+            }
+
+            setPictures(pictures);
+            console.log(pictures);
             setApod({
                 date: res.data.date,
                 explanation: res.data.explanation,
@@ -35,7 +63,7 @@ const Gallery: () => JSX.Element = () => {
     useEffect(() => {
         FetchData();
     }, []);
-    return <GalleryPresenter apod={apod} />;
+    return <GalleryPresenter apod={apod} pictures={pictures} />;
 };
 
 export default Gallery;
