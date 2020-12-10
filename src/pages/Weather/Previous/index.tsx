@@ -24,11 +24,11 @@ const PreviousData: React.FunctionComponent<IPreviousDataProps> = (
                                 <>
                                     <Data>
                                         <TempText> High :</TempText>
-                                        <DataText>{sol.maxTemp} °C</DataText>
+                                        <DataText>{sol.maxTemp} °F</DataText>
                                     </Data>
                                     <Data>
                                         <TempText> Low :</TempText>
-                                        <DataText> {sol.minTemp} °C</DataText>
+                                        <DataText> {sol.minTemp} °F</DataText>
                                     </Data>
                                 </>
                             ) : (

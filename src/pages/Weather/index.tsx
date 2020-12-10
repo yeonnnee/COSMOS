@@ -21,7 +21,7 @@ export interface ISolDataState {
 }
 
 const Weather: () => JSX.Element = () => {
-    const [currentUnit, setCurrentUnit] = useState<string>("C");
+    const [currentUnit, setCurrentUnit] = useState<string>("F");
     const [displayPrev, setDisplayPrev] = useState<string>("65%");
     const [solData, setSolData] = useState<ISolDataState>({
         selected: null,
@@ -95,6 +95,7 @@ const Weather: () => JSX.Element = () => {
             selected: selected[0],
             previous: solData.previous,
         });
+        setCurrentUnit("F");
     }
 
     async function getExample() {
