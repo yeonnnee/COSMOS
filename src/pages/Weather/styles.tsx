@@ -11,7 +11,7 @@ interface IPreviousSectionProps {
     status: string;
 }
 interface IDegreeProps {
-    degrees: undefined | string;
+    degrees: undefined | number;
 }
 interface IMainProps {
     bgImg: string;
@@ -160,12 +160,35 @@ export const Compass = styled.div`
     display: grid;
     place-items: center;
 `;
+export const Direction = styled.span`
+    position: relative;
+    opacity: 0.5;
+
+    &:nth-child(1) {
+        top: -93px;
+        right: -13px;
+    }
+    &:nth-child(2) {
+        top: -30px;
+        left: -53px;
+    }
+    &:nth-child(3) {
+        top: 27px;
+        left: -5px;
+    }
+    &:nth-child(4) {
+        top: -30px;
+        left: 48px;
+    }
+`;
+export const DirectionText = styled.div``;
+
 export const Degrees = styled.div`
     width: 18px;
     height: 45px;
     background-color: #53323b;
     clip-path: polygon(50% 0, 0% 100%, 100% 100%);
-    transform: translateY(-50%)
+    transform: translateY(-5px)
         rotate(${(props: IDegreeProps) => props.degrees}deg);
     transform-origin: bottom center;
     transition: transform 2s ease;

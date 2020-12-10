@@ -1,7 +1,7 @@
 import React from "react";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-import BackImg from "../../img/1.jpg";
+// import BackImg from "../../img/1.jpg";
 import { ISolDataState } from ".";
 import Previous from "./Previous";
 import {
@@ -31,6 +31,8 @@ import {
     Desc,
     Icon,
     Label,
+    Direction,
+    DirectionText,
 } from "./styles";
 
 interface IWeatherProps {
@@ -97,8 +99,19 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                     <Column>
                         <Wind>
                             <Compass>
-                                <Degrees degrees="157"></Degrees>
+                                <Degrees
+                                    degrees={
+                                        solData?.selected?.windDirectionDegrees
+                                    }
+                                />
+                                <DirectionText>
+                                    <Direction>N</Direction>
+                                    <Direction>E</Direction>
+                                    <Direction>S</Direction>
+                                    <Direction>W</Direction>
+                                </DirectionText>
                             </Compass>
+
                             <WindInfo>
                                 <BoxTitle>Wind</BoxTitle>
 
@@ -121,8 +134,16 @@ const WeatherPresenter: React.FunctionComponent<IWeatherProps> = (
                         Elysium Planitia, a flat, smooth plain near Mars’
                         equator.
                         <br />
+                        As more data from a particular sol is downlinked from
+                        the spacecraft (sometimes several days later), these
+                        values are recalculated, and consequently may change as
+                        more data is received on Earth.
+                        <br />
                         Nasa provides per-Sol summary data for each of the last
                         seven available Sols (Martian Days)
+                        <br />
+                        Please note that if there is no data to provide you,
+                        example data will be appeared.
                     </Text>
 
                     <Unit>
