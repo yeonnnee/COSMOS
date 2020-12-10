@@ -16,10 +16,11 @@ import { Iapod } from "./index";
 
 interface IHomeProps {
     apod: Iapod;
+    selectItem: (e: React.MouseEvent) => void;
 }
 
 const GalleryPresenter: React.FunctionComponent<IHomeProps> = (homeProps) => {
-    const { apod } = homeProps;
+    const { apod, selectItem } = homeProps;
     return (
         <>
             <Main>
@@ -27,7 +28,12 @@ const GalleryPresenter: React.FunctionComponent<IHomeProps> = (homeProps) => {
                     <MoreSection>
                         {apod.pictures.map((pic, index) => {
                             return (
-                                <Box key={index} num={index + 1}>
+                                <Box
+                                    key={index}
+                                    num={index + 1}
+                                    onClick={selectItem}
+                                    id={pic.date}
+                                >
                                     <MoreImg src={pic?.hdurl} />
                                 </Box>
                             );

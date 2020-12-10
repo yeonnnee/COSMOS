@@ -22,41 +22,55 @@ const Gallery: () => JSX.Element = () => {
         pictures: [],
     });
 
+    function selectItem(e: React.MouseEvent) {
+        const target = e.currentTarget.id;
+        const selectedItem = apod.pictures.find((pic) => pic.date === target);
+        setApod({
+            loading: false,
+            selected: selectedItem ? selectedItem : apod.selected,
+            pictures: apod.pictures,
+        });
+    }
     async function FetchData() {
         try {
+            // get todays' pic
             const res = await nasaApi.apod();
+
+            const apod = {
+                date: res.data.date,
+                explanation: res.data.explanation,
+                hdurl: res.data.hdurl,
+                title: res.data.title,
+            };
+
+            // I picked several pics which i liked //
+            const dates = [
+                "2020-11-06",
+                "2020-11-09",
+                "2020-11-13",
+                "2020-11-16",
+                "2020-11-17",
+                "2020-11-25",
+                "2020-11-26",
+                "2020-11-28",
+            ];
+
             const pictures = [];
-            for (let i = 20; i < 30; i++) {
-                if (i < 10) {
-                    const result = await nasaApi.pic(`2020-11-0${i}`);
-                    const pic = {
-                        date: result.data.date,
-                        explanation: result.data.explanation,
-                        hdurl: result.data.hdurl,
-                        title: result.data.title,
-                    };
-                    pictures.push(pic);
-                } else {
-                    const result = await nasaApi.pic(`2020-11-${i}`);
-                    const pic = {
-                        date: result.data.date,
-                        explanation: result.data.explanation,
-                        hdurl: result.data.hdurl,
-                        title: result.data.title,
-                    };
-                    pictures.push(pic);
-                }
+            for (let i = 0; i < dates.length; i++) {
+                const result = await nasaApi.pic(dates[i]);
+                const pic = {
+                    date: result.data.date,
+                    explanation: result.data.explanation,
+                    hdurl: result.data.hdurl,
+                    title: result.data.title,
+                };
+                pictures.push(pic);
             }
 
             setApod({
                 loading: false,
-                selected: {
-                    date: res.data.date,
-                    explanation: res.data.explanation,
-                    hdurl: res.data.hdurl,
-                    title: res.data.title,
-                },
-                pictures: pictures,
+                selected: apod,
+                pictures: [...pictures, apod],
             });
         } catch (error) {
             console.log(error);
@@ -66,7 +80,7 @@ const Gallery: () => JSX.Element = () => {
     useEffect(() => {
         FetchData();
     }, []);
-    return <GalleryPresenter apod={apod} />;
+    return <GalleryPresenter apod={apod} selectItem={selectItem} />;
 };
 
 export default Gallery;
