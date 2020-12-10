@@ -16,20 +16,19 @@ import { Iapod } from "./index";
 
 interface IHomeProps {
     apod: Iapod;
-    pictures: Array<Iapod>;
 }
 
 const GalleryPresenter: React.FunctionComponent<IHomeProps> = (homeProps) => {
-    const { apod, pictures } = homeProps;
+    const { apod } = homeProps;
     return (
         <>
             <Main>
                 <Section>
                     <MoreSection>
-                        {pictures.map((pic, index) => {
+                        {apod.pictures.map((pic, index) => {
                             return (
                                 <Box key={index} num={index + 1}>
-                                    <MoreImg src={pic?.hdurl}></MoreImg>
+                                    <MoreImg src={pic?.hdurl} />
                                 </Box>
                             );
                         })}
@@ -39,15 +38,15 @@ const GalleryPresenter: React.FunctionComponent<IHomeProps> = (homeProps) => {
                 <Section>
                     <SectionTitle>
                         Astronomy Picture of the Day
-                        <Date>{apod.date}</Date>
+                        <Date>{apod.selected.date}</Date>
                     </SectionTitle>
 
-                    <Title>{apod.title}</Title>
-                    <Desc>{apod.explanation}</Desc>
+                    <Title>{apod.selected.title}</Title>
+                    <Desc>{apod.selected.explanation}</Desc>
                 </Section>
 
                 <Section>
-                    <Img src={apod.hdurl} />
+                    <Img src={apod.selected.hdurl} />
                 </Section>
             </Main>
         </>

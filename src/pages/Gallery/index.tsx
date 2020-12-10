@@ -3,57 +3,60 @@ import { nasaApi } from "../../api";
 
 import GalleryPresenter from "./GalleryPresenter";
 
-export interface Iapod {
+interface Pic {
     date: string;
     explanation: string;
     hdurl: string;
     title: string;
 }
+export interface Iapod {
+    loading: boolean;
+    selected: Pic;
+    pictures: Array<Pic>;
+}
 
 const Gallery: () => JSX.Element = () => {
     const [apod, setApod] = useState<Iapod>({
-        date: "",
-        explanation: "",
-        hdurl: "",
-        title: "",
+        loading: true,
+        selected: { date: "", explanation: "", hdurl: "", title: "" },
+        pictures: [],
     });
-    const [pictures, setPictures] = useState<Array<Iapod>>([]);
 
     async function FetchData() {
         try {
             const res = await nasaApi.apod();
-            const today = new Date();
-            const date = today.getDate();
             const pictures = [];
             for (let i = 20; i < 30; i++) {
                 if (i < 10) {
-                    const res = await nasaApi.pic(`2020-11-0${i}`);
+                    const result = await nasaApi.pic(`2020-11-0${i}`);
                     const pic = {
-                        date: res.data.date,
-                        explanation: res.data.explanation,
-                        hdurl: res.data.hdurl,
-                        title: res.data.title,
+                        date: result.data.date,
+                        explanation: result.data.explanation,
+                        hdurl: result.data.hdurl,
+                        title: result.data.title,
                     };
                     pictures.push(pic);
                 } else {
-                    const res = await nasaApi.pic(`2020-11-${i}`);
+                    const result = await nasaApi.pic(`2020-11-${i}`);
                     const pic = {
-                        date: res.data.date,
-                        explanation: res.data.explanation,
-                        hdurl: res.data.hdurl,
-                        title: res.data.title,
+                        date: result.data.date,
+                        explanation: result.data.explanation,
+                        hdurl: result.data.hdurl,
+                        title: result.data.title,
                     };
                     pictures.push(pic);
                 }
             }
 
-            setPictures(pictures);
-            console.log(pictures);
             setApod({
-                date: res.data.date,
-                explanation: res.data.explanation,
-                hdurl: res.data.hdurl,
-                title: res.data.title,
+                loading: false,
+                selected: {
+                    date: res.data.date,
+                    explanation: res.data.explanation,
+                    hdurl: res.data.hdurl,
+                    title: res.data.title,
+                },
+                pictures: pictures,
             });
         } catch (error) {
             console.log(error);
@@ -63,7 +66,7 @@ const Gallery: () => JSX.Element = () => {
     useEffect(() => {
         FetchData();
     }, []);
-    return <GalleryPresenter apod={apod} pictures={pictures} />;
+    return <GalleryPresenter apod={apod} />;
 };
 
 export default Gallery;
