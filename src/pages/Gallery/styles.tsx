@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 interface BoxProps {
     num: number;
+    id: string;
 }
 
 const PicSlide = keyframes`
@@ -18,6 +19,7 @@ export const Main = styled.main`
     place-items: center;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
+    height: 100vh;
     @media only screen and (max-width: 1600px) {
         padding: 50px 20px 20px 20px;
     }
