@@ -10,11 +10,18 @@ const api = axios.create({
 
 interface INasaApi {
     apod: () => AxiosPromise;
+    pic: (date: string) => AxiosPromise;
     insight: () => AxiosPromise;
 }
 
 export const nasaApi: INasaApi = {
     apod: () => api.get("/planetary/apod"),
+    pic: (date: string) =>
+        api.get("/planetary/apod/", {
+            params: {
+                date: `${date}`,
+            },
+        }),
     insight: () =>
         api.get("/insight_weather/", {
             params: {
