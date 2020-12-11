@@ -29,12 +29,13 @@ export const Main = styled.main`
 `;
 export const Section = styled.section`
     width: 100%;
-    margin-top: 200px;
+    margin-top: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transform: translateX(-5%);
+    transform: translateX(-8%);
+
     &:nth-child(2) {
         transform: translateX(-10%);
         @media only screen and (max-width: 780px) {
@@ -42,10 +43,11 @@ export const Section = styled.section`
         }
     }
     &:nth-child(3) {
-        border: 1px solid #f7f1e3;
+        padding: 20px;
     }
+
     @media only screen and (max-width: 780px) {
-        transform: translateX(0) translateY(20%);
+        transform: translateX(0) translateY(30%);
     }
 `;
 
