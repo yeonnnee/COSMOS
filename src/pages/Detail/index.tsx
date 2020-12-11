@@ -3,23 +3,15 @@ import DetailPresenter from "./DetailPresenter";
 
 import { db } from "../../firebase";
 
-export interface Istate {
-    currentGroup: number;
-    left: number;
-    max: boolean;
-    min: boolean;
-}
-export interface IDiameter {
-    equatorialDiameter: string;
-    polarDiameter: string;
-}
-
 export interface IPlanets {
     id: number;
     name: string;
     imgUrl: string;
 }
-
+export interface IDiameter {
+    equatorialDiameter: string;
+    polarDiameter: string;
+}
 export interface IPlanet {
     name?: string;
     imgUrl?: string;
@@ -72,13 +64,15 @@ const Detail: () => JSX.Element = () => {
             // 전체 행성
             const planets: Array<IPlanets> = [];
 
-            res.forEach((document) =>
-                planets.push({
-                    id: document.data().id,
-                    name: document.data().name,
-                    imgUrl: document.data().imgUrl,
-                })
-            );
+            res.forEach((document) => {
+                if (document.data().name !== selected) {
+                    planets.push({
+                        id: document.data().id,
+                        name: document.data().name,
+                        imgUrl: document.data().imgUrl,
+                    });
+                }
+            });
 
             planets.sort(function (a, b) {
                 const one = a.id;
