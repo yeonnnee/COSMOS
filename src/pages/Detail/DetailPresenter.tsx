@@ -1,6 +1,4 @@
 import React from "react";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { IPlanet, IPlanets } from "./index";
 import {
