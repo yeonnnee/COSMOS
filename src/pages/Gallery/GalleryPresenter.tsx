@@ -13,6 +13,7 @@ import {
     MoreSection,
 } from "./styles";
 import { Iapod } from "./index";
+import Loader from "../../components/Loader";
 
 interface IHomeProps {
     apod: Iapod;
@@ -21,40 +22,45 @@ interface IHomeProps {
 
 const GalleryPresenter: React.FunctionComponent<IHomeProps> = (homeProps) => {
     const { apod, selectItem } = homeProps;
+
     return (
         <>
-            <Main>
-                <Section>
-                    <MoreSection>
-                        {apod.pictures.map((pic, index) => {
-                            return (
-                                <Box
-                                    key={index}
-                                    num={index + 1}
-                                    onClick={selectItem}
-                                    id={pic.date}
-                                >
-                                    <MoreImg src={pic?.hdurl} />
-                                </Box>
-                            );
-                        })}
-                    </MoreSection>
-                </Section>
+            {apod.loading ? (
+                <Loader />
+            ) : (
+                <Main>
+                    <Section>
+                        <MoreSection>
+                            {apod.pictures.map((pic, index) => {
+                                return (
+                                    <Box
+                                        key={index}
+                                        num={index + 1}
+                                        onClick={selectItem}
+                                        id={pic.date}
+                                    >
+                                        <MoreImg src={pic?.hdurl} />
+                                    </Box>
+                                );
+                            })}
+                        </MoreSection>
+                    </Section>
 
-                <Section>
-                    <SectionTitle>
-                        Astronomy Picture of the Day
-                        <Date>{apod.selected.date}</Date>
-                    </SectionTitle>
+                    <Section>
+                        <SectionTitle>
+                            Astronomy Picture of the Day
+                            <Date>{apod.selected.date}</Date>
+                        </SectionTitle>
 
-                    <Title>{apod.selected.title}</Title>
-                    <Desc>{apod.selected.explanation}</Desc>
-                </Section>
+                        <Title>{apod.selected.title}</Title>
+                        <Desc>{apod.selected.explanation}</Desc>
+                    </Section>
 
-                <Section>
-                    <Img src={apod.selected.hdurl} />
-                </Section>
-            </Main>
+                    <Section>
+                        <Img src={apod.selected.hdurl} />
+                    </Section>
+                </Main>
+            )}
         </>
     );
 };
