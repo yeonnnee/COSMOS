@@ -4,7 +4,7 @@ Building an Explore space Web Application using a NASA open Api.
 
 ## Contributor
 
-yeonnnee
+SEUNG YEON CHOUNG
 
 ## Project Period
 
@@ -29,7 +29,7 @@ yeonnnee
 
 :one: _API_
 
-Get Astronomy Picture of the Day(APOD) and mars Weather information from _NASA's OPEN API_. Regarding Opeon Api, Please refer to below Link.
+Get Astronomy Picture of the Day(APOD) and mars Weather information from _NASA's OPEN API_. Regarding Open Api, Please refer to below Link.
 
 [NASA OPEN API](https://api.nasa.gov/)
 
@@ -44,5 +44,8 @@ When the planet clicked, detail page will be loaded.
 
 :four: _Weather_
 
-Get mars weather information from the NASA's open Api, It provides per-Sol summary data for each of the last
-seven available Sols (Martian Days)
+Get mars weather information from the NASA's open Api, It provides per-Sol summary data for each of the last seven available Sols (Martian Days).
+
+I Found that sometimes data is empty, so that I created example data just in case.
+
+:exclamation: :exclamation: Please Note that if there is no data to provide, example data will be displayed instead. :exclamation: :exclamation:
