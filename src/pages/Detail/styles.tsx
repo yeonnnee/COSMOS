@@ -11,6 +11,7 @@ export const Main = styled.main`
     background-color: black;
     font-family: "Titillium Web", sans-serif;
 `;
+
 export const Section = styled.section`
     width: 100%;
     height: 100vh;
@@ -23,17 +24,47 @@ export const Section = styled.section`
 `;
 export const More = styled.div`
     width: 100%;
-    height: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 110px;
+`;
+export const MoreText = styled.div`
+    align-self: flex-start;
+    transform: translateY(-40px) translateX(20px);
+    color: #f1c40f;
+    font-family: "Titillium Web", sans-serif;
+`;
+export const PlanetName = styled.div`
+    display: none;
+    color: #5e5037;
+`;
+export const PlanetLink = styled(Link)`
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    height: 60%;
+    transform: translateY(-35%);
+    &:hover {
+        transform: translateY(-40%);
+    }
+    &:hover ${PlanetName} {
+        display: block;
+    }
+`;
+export const Planets = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 `;
-
-export const PlanetLink = styled(Link)``;
-export const Planets = styled.div``;
 export const MorePlanets = styled.img`
-    width: 200px;
+    width: 100%;
 `;
+
 export const Img = styled.div`
     width: 100%;
     background-image: url(${(props: IImageProps) => props.bgImg});
@@ -54,6 +85,7 @@ export const Desc = styled.div`
     line-height: 1.5;
     font-size: 18px;
     opacity: 0.7;
+    transform: translateY(20px);
 `;
 export const Info = styled.section`
     width: 97%;
@@ -96,18 +128,4 @@ export const SmallText = styled.div`
     position: relative;
     top: -18px;
     opacity: 0.7;
-`;
-
-export const Btn = styled.div`
-    width: 30px;
-    height: 60px;
-
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    &:hover {
-        border: 2px solid #d1ccc0;
-    }
 `;

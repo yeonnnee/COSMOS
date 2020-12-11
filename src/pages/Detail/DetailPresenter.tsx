@@ -16,10 +16,11 @@ import {
     Title,
     Text,
     SmallText,
-    Btn,
     Planets,
     MorePlanets,
     PlanetLink,
+    MoreText,
+    PlanetName,
 } from "./styles";
 
 interface IDatailProps {
@@ -41,9 +42,7 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
                     <Name>{planet?.name}</Name>
                     <Desc>{planet?.detail}</Desc>
                     <More>
-                        <Btn>
-                            <FontAwesomeIcon icon={faAngleLeft} />
-                        </Btn>
+                        <MoreText>More</MoreText>
                         <Planets>
                             {planets.map((planet, index) => {
                                 return (
@@ -54,13 +53,11 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
                                         onClick={updatePlanet}
                                     >
                                         <MorePlanets src={planet.imgUrl} />
+                                        <PlanetName>{planet.name}</PlanetName>
                                     </PlanetLink>
                                 );
                             })}
                         </Planets>
-                        <Btn>
-                            <FontAwesomeIcon icon={faAngleRight} />
-                        </Btn>
                     </More>
                 </Intro>
                 <Img bgImg={planet?.imgUrl}></Img>
