@@ -47,7 +47,7 @@ const Header: () => JSX.Element = () => {
     return (
         <HeaderSection show={location.pathname === "/" ? "true" : "false"}>
             <Title>
-                <HeaderLink to="/cosmos/planets">
+                <HeaderLink to="/cosmos/gallery">
                     <Icon icon={faRocket} />
                     <Text>COSMOS</Text>
                 </HeaderLink>
