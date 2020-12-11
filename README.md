@@ -19,9 +19,11 @@ SEUNG YEON CHOUNG
 
 <div>
 
-<Img src="" width="220px" height="300px"  alt="Gallery" />
-<Img src="" width="220px" height="300px"  alt="Weather" />
-<Img src="" width="220px" height="300px"  alt="Planets" />
+<Img src="https://user-images.githubusercontent.com/61894688/101882004-998c1000-3bd8-11eb-9ce0-4f9a6ed8cdde.gif" width="600px" height="291px"  alt="Gallery" />
+<Img src="https://user-images.githubusercontent.com/61894688/101882808-b70da980-3bd9-11eb-8848-c67682e969d6.gif" width="600px" height="291px" alt="Weather" 
+/>
+<Img src="https://user-images.githubusercontent.com/61894688/101882200-e7087d00-3bd8-11eb-8f4b-f0939aadad66.gif" width="600px" height="291px" alt="Planets" 
+/>
 
 </div>
 
