@@ -14,6 +14,7 @@ SEUNG YEON CHOUNG
 
 -   [Demo](#demo)
 -   [Features](#features)
+-   [Get Started](#start)
 
 ## <div id="demo">Demo</div>
 
@@ -51,3 +52,13 @@ Get mars weather information from the NASA's open Api, It provides per-Sol summa
 I Found that sometimes data is empty, so that I created example data just in case.
 
 :exclamation: :exclamation: Please Note that if there is no data to provide, example data will be displayed instead. :exclamation: :exclamation:
+
+#### <div id="start">Get Started</div>
+
+```
+$ git clone https://github.com/yeonnnee/COSMOS
+```
+
+```
+$ npm start
+```
