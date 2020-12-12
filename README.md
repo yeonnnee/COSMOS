@@ -47,7 +47,7 @@ When the planet clicked, detail page will be loaded.
 
 :four: _Weather_
 
-Get mars weather information from the NASA's open Api, It provides per-Sol summary data for each of the last seven available Sols (Martian Days).
+Get mars weather information from the NASA's open Api, It provides per-Sol summary data for each of the last seven available Sols (Martian Days, _Day on Mars_).
 
 I Found that sometimes data is empty, so that I created example data just in case.
 
