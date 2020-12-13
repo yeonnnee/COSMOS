@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { nasaApi } from "../../api";
+import { getInsight } from "../../api";
 import WeatherPresenter from "./WeatherPresenter";
 import { db } from "../../firebase";
 
@@ -122,36 +122,46 @@ const Weather: () => JSX.Element = () => {
 
     async function fetchData() {
         try {
-            const res = await nasaApi.insight();
+            const res = await getInsight();
             const sol_keys = res.data.sol_keys;
 
-            const result = [];
-            for (let i = 0; i < sol_keys.length; i++) {
-                const sol = res.data[sol_keys[i]];
-                const date = new Date(sol.First_UTC).toLocaleDateString("en", {
-                    day: "numeric",
-                    month: "long",
-                });
+            if (sol_keys.length > 0) {
+                const result = [];
+                for (let i = 0; i < sol_keys.length; i++) {
+                    const sol = res.data[sol_keys[i]];
+                    const date = new Date(sol.First_UTC).toLocaleDateString(
+                        "en",
+                        {
+                            day: "numeric",
+                            month: "long",
+                        }
+                    );
 
-                const solData = {
-                    sol: sol_keys[i],
-                    maxTemp: Math.round(sol.AT?.max),
-                    minTemp: Math.round(sol.AT?.mn),
-                    season: sol.Season,
-                    windSpeed: Math.round(sol.HWS?.av),
-                    windDirectionDegrees: sol.WD?.most_common?.compass_degrees,
-                    windDirectionCardinal: sol.WD?.most_common?.compass_point,
-                    date: date,
-                };
-                result.push(solData);
-            }
-            if (!result[0].maxTemp) {
+                    const solData = {
+                        sol: sol_keys[i],
+                        maxTemp: Math.round(sol.AT?.max),
+                        minTemp: Math.round(sol.AT?.mn),
+                        season: sol.Season,
+                        windSpeed: Math.round(sol.HWS?.av),
+                        windDirectionDegrees:
+                            sol.WD?.most_common?.compass_degrees,
+                        windDirectionCardinal:
+                            sol.WD?.most_common?.compass_point,
+                        date: date,
+                    };
+                    result.push(solData);
+                }
+
+                if (!result[0].maxTemp) {
+                    getExample();
+                }
+                setSolData({
+                    selected: result[result.length - 1],
+                    previous: result,
+                });
+            } else {
                 getExample();
             }
-            setSolData({
-                selected: result[result.length - 1],
-                previous: result,
-            });
         } catch (error) {
             console.log(error);
         }

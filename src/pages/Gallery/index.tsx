@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { nasaApi } from "../../api";
+import { getApod } from "../../api";
 
 import GalleryPresenter from "./GalleryPresenter";
 
@@ -34,7 +34,7 @@ const Gallery: () => JSX.Element = () => {
     async function FetchData() {
         try {
             // get todays' pic
-            const res = await nasaApi.apod();
+            const res = await getApod();
 
             const apod = {
                 date: res.data.date,
@@ -58,7 +58,7 @@ const Gallery: () => JSX.Element = () => {
 
             const pictures = [];
             for (let i = 0; i < dates.length; i++) {
-                const result = await nasaApi.pic(dates[i]);
+                const result = await getApod(dates[i]);
                 const pic = {
                     date: result.data.date,
                     explanation: result.data.explanation,
