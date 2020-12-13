@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IPlanet, IPlanets } from "./index";
+import { IPlanet, IPlanets } from "./DetailContainer";
 import {
     Main,
     More,

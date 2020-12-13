@@ -12,7 +12,7 @@ import {
     MoreImg,
     MoreSection,
 } from "./styles";
-import { Iapod } from "./index";
+import { Iapod } from "./GalleryContainer";
 import Loader from "../../components/Loader";
 
 interface IHomeProps {

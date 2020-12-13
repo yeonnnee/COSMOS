@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IPlanets } from ".";
+import { IPlanets } from "./PlanetsContainer";
 import {
     Box,
     Planet,

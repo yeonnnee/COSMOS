@@ -1,5 +1,5 @@
 import React from "react";
-import { ISolData } from "../index";
+import { ISolData } from "../WeatherContainer";
 
 import { Previous, Item, More, PrevDate } from "./styles";
 import { SolNum, Temperature, Data, TempText, DataText } from "../styles";

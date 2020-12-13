@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Cover from "../pages/Cover";
-import Gallery from "../pages/Gallery";
+import Cover from "../pages/Cover/CoverContainer";
+import Gallery from "../pages/Gallery/GalleryContainer";
 import Navigation from "./Navigation";
-import Planets from "../pages/Planets";
-import Detail from "../pages/Detail";
-import Weather from "../pages/Weather";
+import Planets from "../pages/Planets/PlanetsContainer";
+import Detail from "../pages/Detail/DetailContainer";
+import Weather from "../pages/Weather/WeatherContainer";
 
 const Router: () => JSX.Element = () => {
     return (

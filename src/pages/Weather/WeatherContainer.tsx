@@ -124,7 +124,7 @@ const Weather: () => JSX.Element = () => {
         try {
             const res = await getInsight();
             const sol_keys = res.data.sol_keys;
-
+            console.log(res);
             if (sol_keys.length > 0) {
                 const result = [];
                 for (let i = 0; i < sol_keys.length; i++) {

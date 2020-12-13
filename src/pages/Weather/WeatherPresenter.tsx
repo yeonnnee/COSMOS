@@ -2,8 +2,8 @@ import React from "react";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 // import BackImg from "../../img/1.jpg";
-import { ISolDataState } from ".";
-import Previous from "./Previous";
+import { ISolDataState } from "./WeatherContainer";
+import Previous from "./Previous/PreviousPresenter";
 import {
     Main,
     Section,
