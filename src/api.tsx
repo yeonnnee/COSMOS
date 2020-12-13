@@ -1,7 +1,5 @@
 import axios, { AxiosPromise } from "axios";
 
-import { IApod } from "./types";
-
 const api_key = process.env.REACT_APP_API_KEY;
 const api = axios.create({
     baseURL: `https://api.nasa.gov`,
@@ -9,6 +7,17 @@ const api = axios.create({
         api_key: api_key,
     },
 });
+
+export interface IApod {
+    copyright: string;
+    date: string;
+    explanation: string;
+    hdurl: string;
+    media_type: string;
+    service_version: string;
+    title: string;
+    url: string;
+}
 
 export const getApod: (date?: string) => AxiosPromise<IApod> = (date) => {
     if (date) {
