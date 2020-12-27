@@ -66,7 +66,7 @@ export const Column = styled.div`
             border-right: 2px solid #cf6a87;
         }
     }
-    @media only screen and (max-width: 655px) {
+    @media only screen and (max-width: 707px) {
         padding-bottom: 20px;
         border-right: none;
         border-bottom: 2px solid #cf6a87;
