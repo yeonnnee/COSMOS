@@ -17,8 +17,6 @@ SEUNG YEON CHOUNG
 
 ## <div id="demo">Demo</div>
 
-#### Deploy sites with Netlify
-
 #### Please visit [COSMOS](https://vigilant-bohr-3cf603.netlify.app/)
 
 <div>
