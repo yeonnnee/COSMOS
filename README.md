@@ -14,9 +14,12 @@ SEUNG YEON CHOUNG
 
 -   [Demo](#demo)
 -   [Features](#features)
--   [deploy](#deploy)
 
 ## <div id="demo">Demo</div>
+
+#### Deploy sites with Netlify
+
+Please visit [COSMOS](https://vigilant-bohr-3cf603.netlify.app/)
 
 <div>
 
@@ -52,9 +55,3 @@ Get mars weather information from the NASA's open Api, It provides per-Sol summa
 I Found that sometimes data is empty, so that I created example data just in case.
 
 :exclamation: :exclamation: Please Note that if there is no data to provide, example data will be displayed instead. :exclamation: :exclamation:
-
-#### <div id="deploy">Deploy</div>
-
-Deploy sites with Netlify
-
-visit [COSMOS](https://vigilant-bohr-3cf603.netlify.app/)
