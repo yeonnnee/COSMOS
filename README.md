@@ -14,7 +14,7 @@ SEUNG YEON CHOUNG
 
 -   [Demo](#demo)
 -   [Features](#features)
--   [Get Started](#start)
+-   [deploy](#deploy)
 
 ## <div id="demo">Demo</div>
 
@@ -53,12 +53,8 @@ I Found that sometimes data is empty, so that I created example data just in cas
 
 :exclamation: :exclamation: Please Note that if there is no data to provide, example data will be displayed instead. :exclamation: :exclamation:
 
-#### <div id="start">Get Started</div>
+#### <div id="deploy">Deploy</div>
 
-```
-$ git clone https://github.com/yeonnnee/COSMOS
-```
+Deploy sites with Netlify
 
-```
-$ npm start
-```
+visit [COSMOS](https://vigilant-bohr-3cf603.netlify.app/)
