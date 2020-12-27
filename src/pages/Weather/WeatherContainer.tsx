@@ -139,7 +139,7 @@ const Weather: () => JSX.Element = () => {
 
                     const solData = {
                         sol: sol_keys[i],
-                        maxTemp: Math.round(sol.AT?.max),
+                        maxTemp: Math.round(sol.AT?.mx),
                         minTemp: Math.round(sol.AT?.mn),
                         season: sol.Season,
                         windSpeed: Math.round(sol.HWS?.av),
