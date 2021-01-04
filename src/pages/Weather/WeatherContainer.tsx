@@ -43,18 +43,18 @@ const Weather: () => JSX.Element = () => {
 
         //* celsius to Fah *//
         const fahMaxTemp = selectedMaxTemp
-            ? Math.round(selectedMaxTemp * 1.8 + 32)
+            ? Math.floor(selectedMaxTemp * 1.8 + 32)
             : undefined;
         const fahMinTemp = selectedMinTemp
-            ? Math.round(selectedMinTemp * 1.8 + 32)
+            ? Math.floor(selectedMinTemp * 1.8 + 32)
             : undefined;
 
         //* fahrenheit to celsius *//
         const celMaxTemp = selectedMaxTemp
-            ? Math.round((selectedMaxTemp - 32) / 1.8)
+            ? Math.floor((selectedMaxTemp - 32) / 1.8)
             : undefined;
         const celMinTemp = selectedMinTemp
-            ? Math.round((selectedMinTemp - 32) / 1.8)
+            ? Math.floor((selectedMinTemp - 32) / 1.8)
             : undefined;
 
         //* convert *//
