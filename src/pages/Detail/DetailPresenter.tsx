@@ -19,6 +19,9 @@ import {
     PlanetLink,
     MoreText,
     PlanetName,
+    SmallImg,
+    IntroTitle,
+    InfoSection,
 } from "./styles";
 
 interface IDatailProps {
@@ -37,7 +40,11 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
         <Main>
             <Section>
                 <Intro>
-                    <Name>{planet?.name}</Name>
+                    <IntroTitle>
+                        <Name>{planet?.name}</Name>
+                        <SmallImg src={planet?.imgUrl} />
+                    </IntroTitle>
+
                     <Desc>{planet?.detail}</Desc>
                     <More>
                         <MoreText>More</MoreText>
@@ -60,38 +67,41 @@ const DetailPresenter: React.FunctionComponent<IDatailProps> = (
                 </Intro>
                 <Img bgImg={planet?.imgUrl}></Img>
             </Section>
-            <Info>
-                <Column>
-                    <Title>Orbit Period</Title>
-                    <Text>
-                        {orbitPeriod
-                            ? orbitPeriod.toString().split("(")[0]
-                            : null}
-                    </Text>
+            <InfoSection>
+                <Info>
+                    {" "}
+                    <Column>
+                        <Title>Orbit Period</Title>
+                        <Text>
+                            {orbitPeriod
+                                ? orbitPeriod.toString().split("(")[0]
+                                : null}
+                        </Text>
 
-                    {orbitPeriod && orbitPeriod.toString().split("(")[1] ? (
-                        <SmallText>
-                            {"(" + orbitPeriod.toString().split("(")[1]}
-                        </SmallText>
-                    ) : null}
-                </Column>
-                <Column>
-                    <Title>Length Of Day</Title>
-                    <Text>{planet?.lengthOfDay}</Text>
-                </Column>
-                <Column>
-                    <Title>Rotation Period</Title>
-                    <Text>{planet?.rotationPeriod}</Text>
-                </Column>
-                <Column>
-                    <Title>Surface Temperature</Title>
-                    <Text>{planet?.surfaceTemperature}</Text>
-                </Column>
-                <Column>
-                    <Title>Gravity</Title>
-                    <Text>{planet?.gravity}</Text>
-                </Column>
-            </Info>
+                        {orbitPeriod && orbitPeriod.toString().split("(")[1] ? (
+                            <SmallText>
+                                {"(" + orbitPeriod.toString().split("(")[1]}
+                            </SmallText>
+                        ) : null}
+                    </Column>
+                    <Column>
+                        <Title>Length Of Day</Title>
+                        <Text>{planet?.lengthOfDay}</Text>
+                    </Column>
+                    <Column>
+                        <Title>Rotation Period</Title>
+                        <Text>{planet?.rotationPeriod}</Text>
+                    </Column>
+                    <Column>
+                        <Title>Surface Temperature</Title>
+                        <Text>{planet?.surfaceTemperature}</Text>
+                    </Column>
+                    <Column>
+                        <Title>Gravity</Title>
+                        <Text>{planet?.gravity}</Text>
+                    </Column>
+                </Info>
+            </InfoSection>
         </Main>
     );
 };
