@@ -24,6 +24,7 @@ export const Main = styled.main`
     align-items: center;
     justify-content: space-around;
     background-color: black;
+    overflow: hidden;
 `;
 export const Box = styled.div`
     display: flex;
