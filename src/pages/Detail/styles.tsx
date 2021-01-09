@@ -9,6 +9,9 @@ export const Main = styled.main`
     padding: 20px;
     background-color: black;
     font-family: "Titillium Web", sans-serif;
+    @media only screen and (max-width: 375px) {
+        overflow: scroll;
+    }
 `;
 
 export const Section = styled.section`
@@ -111,6 +114,7 @@ export const InfoSection = styled.div`
     bottom: 0;
     left: 0;
     padding: 20px;
+
     @media only screen and (max-width: 1162px) {
         position: relative;
         transform: translateY(-80%);
@@ -123,6 +127,9 @@ export const InfoSection = styled.div`
     }
     @media only screen and (max-width: 796px) {
         transform: translateY(-30%);
+    }
+    @media only screen and (max-width: 375px) {
+        transform: translateY(20%);
     }
 `;
 export const Info = styled.section`
