@@ -36,6 +36,11 @@ export const Section = styled.section`
         position: relative;
         transform: translateY(0);
     }
+
+    @media only screen and (max-width: 375px) {
+        width: 350px;
+        transform: translateX(-2%);
+    }
 `;
 export const Info = styled.div`
     padding: 20px;
@@ -265,6 +270,11 @@ export const PreviousSection = styled.section`
         position: relative;
         transform: translateY(0);
     }
+
+    @media only screen and (max-width: 375px) {
+        width: 350px;
+        transform: translateX(-2%);
+    }
 `;
 
 export const PrevText = styled.span`
@@ -285,12 +295,12 @@ export const PrevText = styled.span`
         transform: translateX(30%);
     }
     @media only screen and (max-width: 497px) {
-        position: relative;
         transform: translateX(25%);
     }
-    @media only screen and (max-width: 369px) {
-        position: relative;
-        transform: translateX(20%);
+
+    @media only screen and (max-width: 375px) {
+        width: 350px;
+        transform: translateX(15%);
     }
 `;
 
