@@ -38,8 +38,8 @@ export const Section = styled.section`
 
     &:nth-child(2) {
         transform: translateX(-10%);
-        @media only screen and (max-width: 780px) {
-            transform: translateX(0) translateY(60%);
+        @media only screen and (max-width: 776px) {
+            transform: translateX(0) translateY(70%);
         }
     }
     &:nth-child(3) {
