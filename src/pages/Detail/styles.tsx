@@ -66,7 +66,7 @@ export const More = styled.div`
 `;
 export const MoreText = styled.div`
     align-self: flex-start;
-    transform: translateY(30px) translateX(20px);
+    transform: translateY(10px) translateX(20px);
     color: #f1c40f;
     font-family: "Titillium Web", sans-serif;
 `;
